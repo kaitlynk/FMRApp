@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ScheduleTableViewController : UITableViewController
-@property (nonatomic, strong) IBOutlet UILabel *scheduleLabel;
 @property (nonatomic, strong) NSString *currDay;
 @property (nonatomic, strong) NSDictionary *rounds;
 @end

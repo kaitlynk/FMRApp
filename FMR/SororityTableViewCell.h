@@ -13,5 +13,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *letterLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *thumbCrest;
-
+@property (strong, nonatomic) IBOutlet UIImageView *thumbBG;
 @end

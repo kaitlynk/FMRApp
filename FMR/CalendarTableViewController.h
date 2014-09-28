@@ -9,7 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface CalendarTableViewController : UITableViewController
-
-@property (nonatomic, strong) NSArray *fullSched;
-
 @end
