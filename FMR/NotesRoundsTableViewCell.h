@@ -10,4 +10,5 @@
 
 @interface NotesRoundsTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *round;
+@property (strong, nonatomic) IBOutlet UILabel *roundLocation;
 @end

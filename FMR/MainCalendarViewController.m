@@ -9,14 +9,16 @@
 #import "MainCalendarViewController.h"
 #import "ScheduleTableView.h"
 #import "ScheduleTableViewCell.h"
+#import "SororityDetailsViewController.h"
 
 @interface MainCalendarViewController ()
 @property (strong, nonatomic) IBOutlet UISegmentedControl *showSched;
 @property (strong, nonatomic) NSMutableArray *ownSched;
-
 @property (nonatomic, strong) NSString *currDay;
 @property (nonatomic, strong) NSArray *rounds;
 @property (nonatomic, strong) NSDictionary *schedule;
+@property (nonatomic, strong) NSDictionary *sororities;
+@property (nonatomic, strong) NSUserDefaults *defaults;
 @end
 
 @implementation MainCalendarViewController
@@ -27,6 +29,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     /* @"During this meeting you will learn all about recruitment and will split up into your Rho Gamma groups.  This is a mandatory meeting and you should attend.  If you cannot be there expect a call from your Rho Gamma to go over the information shared.  If you have not paid as yet, expect to pay at this meeting." */
+    _defaults = [NSUserDefaults standardUserDefaults];
+    _schedule = [_defaults objectForKey:@"schedule"][_dateRow];
+    _sororities = [_defaults objectForKey:@"sororities"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,10 +41,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    _schedule = [defaults objectForKey:@"schedule"][_dateRow];
     _currDay = [_schedule objectForKey:@"name"];
     _rounds = [_schedule objectForKey:@"rounds"];
     _scheduleLabel.text = _currDay;
@@ -93,15 +94,22 @@
         case 0:
             cell.timeLabel.text = _rounds[row][@"Time"];
             cell.eventLabel.text = _rounds[row][@"Event"];
-            if ( [ _rounds[row][@"House"] length ] > 0)
-                cell.locationLabel.text = [NSString stringWithFormat:@"%@", _rounds[row][@"House"]];
+            if ( [_rounds[row][@"House"] isEqualToString:@" "] )
+                [cell.locationLabel setTitle:@"--" forState:UIControlStateNormal];
+            else if ( [ _rounds[row][@"House"] length ] > 0)
+                [cell.locationLabel setTitle:[NSString stringWithFormat:@"%@", _rounds[row][@"House"]] forState:UIControlStateNormal];
             else
-                cell.locationLabel.text = [NSString stringWithFormat:@"N/A"];
+                [cell.locationLabel setTitle:@"--" forState:UIControlStateNormal];
             break;
         case 1:
             cell.timeLabel.text = _ownSched[row][@"Time"];
             cell.eventLabel.text = _ownSched[row][@"Event"];
-            cell.locationLabel.text = [NSString stringWithFormat:@"%@", _ownSched[row][@"House"]];
+            if ( [_rounds[row][@"House"] isEqualToString:@" "] )
+                [cell.locationLabel setTitle:@"--" forState:UIControlStateNormal];
+            else if ( [ _rounds[row][@"House"] length ] > 0)
+                [cell.locationLabel setTitle:[NSString stringWithFormat:@"%@", _ownSched[row][@"House"]] forState:UIControlStateNormal];
+            else
+                [cell.locationLabel setTitle:@"--" forState:UIControlStateNormal];
             break;
     }
     
@@ -111,8 +119,24 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
+}
+- (IBAction)locationButtonPress:(id)sender {
+    //[self performSegueWithIdentifier:@"ScheduleToSororitySegue" sender:sender];
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    NSString *house = [(UIButton *)sender currentTitle];
+    if ([_sororities objectForKey:house] != NULL)
+        return true;
+    else return false;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString *house = [(UIButton *)sender currentTitle];
     
-    
+    SororityDetailsViewController *sororitydetailviewcontroller = [segue destinationViewController];
+    sororitydetailviewcontroller.sorority = [_sororities objectForKey:house];
 }
 
 /*

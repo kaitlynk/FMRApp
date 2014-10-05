@@ -16,6 +16,11 @@
 
 @implementation SororitiesViewController
 
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+    //return UIInterfaceOrientationLandscapeLeft;
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

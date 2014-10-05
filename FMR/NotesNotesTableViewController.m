@@ -1,33 +1,26 @@
 //
-//  NotesTableViewController.m
+//  NotesNotesTableViewController.m
 //  FMR
 //
-//  Created by Kwan, Kaitlyn on 9/11/14.
+//  Created by Kwan, Kaitlyn on 10/4/14.
 //  Copyright (c) 2014 Kaitlyn Kwan. All rights reserved.
 //
 
-#import "NotesTableViewController.h"
-#import "NotesMainTableViewCell.h"
+#import "NotesNotesTableViewController.h"
+#import "NotesNotesTableViewCell.h"
 
-@interface NotesTableViewController ()
-@property int currRow;
+@interface NotesNotesTableViewController ()
+@property (nonatomic, strong) NSUserDefaults *defaults;
+@property (nonatomic, strong) NSMutableDictionary *notes;
+@property (nonatomic, strong) NSArray *sororities;
 @end
 
-@implementation NotesTableViewController
+@implementation NotesNotesTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _notesSections = @{ @"Schedule": @"Sync your schedule to set reminders.",
-                        @"Notes": @"Write notes for every house visited.",
-                        @"Rankings": @"Set your ranks after every round."
-                        };
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    _defaults = [NSUserDefaults standardUserDefaults];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,26 +37,51 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [_notesSections count];
+    _notes = [[_defaults objectForKey:@"notes"] mutableCopy];
+    _sororities = [_defaults objectForKey:@"rankings"];
+    return [_notes count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *CellIdentifier = @"NotesMainTableViewCell";
+    NotesNotesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NotesNotesTableViewCell" forIndexPath:indexPath];
     
-    NotesMainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    int row = (int)[indexPath row];
-    NSArray *keys = [_notesSections allKeys];
-    
-    cell.name.text = keys[row];
-    cell.desc.text = _notesSections[keys[row]];
+    int row = (int) [indexPath row];
+    cell.sororityName.text = _sororities[row];
+    cell.sororityNotes.text = [_notes objectForKey:_sororities[row]];
+    cell.sororityNotes.layer.borderWidth = 1;
+    cell.sororityNotes.layer.cornerRadius = 10;
+    cell.sororityNotes.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    //[UIColor colorWithRed:0.545 green:0.553 blue:0.545 alpha:1].CGColor;
     
     return cell;
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view resignFirstResponder];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    UITableViewCell *cell = (UITableViewCell*) textView.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    NSString *house = _sororities[ [indexPath row] ];
+    [_notes setValue:textView.text forKey:house];
+    [_defaults setObject:_notes forKey:@"notes"];
+    [_defaults synchronize];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    UITableViewCell *cell = (UITableViewCell*) textView.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    NSString *house = _sororities[ [indexPath row] ];
+    [_notes setValue:textView.text forKey:house];
+    [_defaults setObject:_notes forKey:@"notes"];
+    [_defaults synchronize];
+    [self.tableView reloadData];
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -99,24 +117,14 @@
 }
 */
 
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    _currRow = (int)[indexPath row];
-    
-    if (_currRow == 1)
-        [self performSegueWithIdentifier:@"RoundsSegue" sender:self];
-    else if (_currRow == 0)
-        [self performSegueWithIdentifier:@"RankingsSegue" sender:self];
-    else
-        [self performSegueWithIdentifier:@"NotesSegue" sender:self];
-
-}
+/*
+#pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    }
-
+}
+*/
 
 @end

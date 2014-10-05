@@ -76,10 +76,14 @@
 		12FB08381993F178007596FA /* CalendarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FB08371993F178007596FA /* CalendarTableViewCell.m */; };
 		12FB083C1994280E007596FA /* ScheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FB083B1994280E007596FA /* ScheduleTableViewController.m */; };
 		12FB083F1999D71D007596FA /* ScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 12FB083E1999D71D007596FA /* ScheduleTableViewCell.m */; };
-		C305CC6A19D320E1003A57BA /* NotesRoundsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C305CC6919D320E1003A57BA /* NotesRoundsTableViewController.m */; };
 		C305CC6D19D32119003A57BA /* NotesRoundsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C305CC6C19D32119003A57BA /* NotesRoundsTableViewCell.m */; };
+		C32AE52519E0A98B00CBB528 /* NotesNotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C32AE52419E0A98B00CBB528 /* NotesNotesTableViewController.m */; };
+		C32AE52919E0AB1C00CBB528 /* NotesNotesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C32AE52819E0AB1C00CBB528 /* NotesNotesTableViewCell.m */; };
 		C336AB4D19CB2D9000CAF266 /* NotesScheduleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C336AB4C19CB2D9000CAF266 /* NotesScheduleTableViewController.m */; };
 		C336AB5019CB2FC900CAF266 /* NotesScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C336AB4F19CB2FC900CAF266 /* NotesScheduleTableViewCell.m */; };
+		C351FD7819E0953600208266 /* NotesRankingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C351FD7719E0953600208266 /* NotesRankingsTableViewController.m */; };
+		C351FD7D19E099C900208266 /* NotesRankingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C351FD7C19E099C900208266 /* NotesRankingsTableViewCell.m */; };
+		C381DD3119DC97E200976D71 /* NotesRoundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C381DD3019DC97E200976D71 /* NotesRoundsViewController.m */; };
 		C3E6C90B19C2727000776C87 /* NotesMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E6C90A19C2727000776C87 /* NotesMainTableViewCell.m */; };
 		C3EADB4919BB8037000BAA15 /* MainCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EADB4819BB8037000BAA15 /* MainCalendarViewController.m */; };
 		C3EADB4C19BB869E000BAA15 /* ScheduleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EADB4B19BB869E000BAA15 /* ScheduleTableView.m */; };
@@ -183,14 +187,22 @@
 		12FB083B1994280E007596FA /* ScheduleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewController.m; sourceTree = "<group>"; };
 		12FB083D1999D71C007596FA /* ScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewCell.h; sourceTree = "<group>"; };
 		12FB083E1999D71D007596FA /* ScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewCell.m; sourceTree = "<group>"; };
-		C305CC6819D320E1003A57BA /* NotesRoundsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesRoundsTableViewController.h; sourceTree = "<group>"; };
-		C305CC6919D320E1003A57BA /* NotesRoundsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesRoundsTableViewController.m; sourceTree = "<group>"; };
 		C305CC6B19D32119003A57BA /* NotesRoundsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesRoundsTableViewCell.h; sourceTree = "<group>"; };
 		C305CC6C19D32119003A57BA /* NotesRoundsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesRoundsTableViewCell.m; sourceTree = "<group>"; };
+		C32AE52319E0A98B00CBB528 /* NotesNotesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesNotesTableViewController.h; sourceTree = "<group>"; };
+		C32AE52419E0A98B00CBB528 /* NotesNotesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesNotesTableViewController.m; sourceTree = "<group>"; };
+		C32AE52719E0AB1C00CBB528 /* NotesNotesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesNotesTableViewCell.h; sourceTree = "<group>"; };
+		C32AE52819E0AB1C00CBB528 /* NotesNotesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesNotesTableViewCell.m; sourceTree = "<group>"; };
 		C336AB4B19CB2D9000CAF266 /* NotesScheduleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesScheduleTableViewController.h; sourceTree = "<group>"; };
 		C336AB4C19CB2D9000CAF266 /* NotesScheduleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesScheduleTableViewController.m; sourceTree = "<group>"; };
 		C336AB4E19CB2FC900CAF266 /* NotesScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesScheduleTableViewCell.h; sourceTree = "<group>"; };
 		C336AB4F19CB2FC900CAF266 /* NotesScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesScheduleTableViewCell.m; sourceTree = "<group>"; };
+		C351FD7619E0953500208266 /* NotesRankingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesRankingsTableViewController.h; sourceTree = "<group>"; };
+		C351FD7719E0953600208266 /* NotesRankingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesRankingsTableViewController.m; sourceTree = "<group>"; };
+		C351FD7B19E099C900208266 /* NotesRankingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesRankingsTableViewCell.h; sourceTree = "<group>"; };
+		C351FD7C19E099C900208266 /* NotesRankingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesRankingsTableViewCell.m; sourceTree = "<group>"; };
+		C381DD2F19DC97E200976D71 /* NotesRoundsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesRoundsViewController.h; sourceTree = "<group>"; };
+		C381DD3019DC97E200976D71 /* NotesRoundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesRoundsViewController.m; sourceTree = "<group>"; };
 		C3E6C90919C2727000776C87 /* NotesMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesMainTableViewCell.h; sourceTree = "<group>"; };
 		C3E6C90A19C2727000776C87 /* NotesMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesMainTableViewCell.m; sourceTree = "<group>"; };
 		C3EADB4719BB8037000BAA15 /* MainCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCalendarViewController.h; sourceTree = "<group>"; };
@@ -429,18 +441,50 @@
 			children = (
 				C3EADB6F19C26F57000BAA15 /* NotesTableViewController.h */,
 				C3EADB7019C26F57000BAA15 /* NotesTableViewController.m */,
+				C351FD7919E0954300208266 /* NotesRoundsController */,
+				C351FD7A19E099B700208266 /* NotesRankingsController */,
+				C32AE52619E0A99000CBB528 /* NotesNotesController */,
+			);
+			name = NotesController;
+			sourceTree = "<group>";
+		};
+		C32AE52619E0A99000CBB528 /* NotesNotesController */ = {
+			isa = PBXGroup;
+			children = (
+				C32AE52319E0A98B00CBB528 /* NotesNotesTableViewController.h */,
+				C32AE52419E0A98B00CBB528 /* NotesNotesTableViewController.m */,
+				C32AE52719E0AB1C00CBB528 /* NotesNotesTableViewCell.h */,
+				C32AE52819E0AB1C00CBB528 /* NotesNotesTableViewCell.m */,
+			);
+			name = NotesNotesController;
+			sourceTree = "<group>";
+		};
+		C351FD7919E0954300208266 /* NotesRoundsController */ = {
+			isa = PBXGroup;
+			children = (
 				C3E6C90919C2727000776C87 /* NotesMainTableViewCell.h */,
 				C3E6C90A19C2727000776C87 /* NotesMainTableViewCell.m */,
 				C336AB4B19CB2D9000CAF266 /* NotesScheduleTableViewController.h */,
 				C336AB4C19CB2D9000CAF266 /* NotesScheduleTableViewController.m */,
 				C336AB4E19CB2FC900CAF266 /* NotesScheduleTableViewCell.h */,
 				C336AB4F19CB2FC900CAF266 /* NotesScheduleTableViewCell.m */,
-				C305CC6819D320E1003A57BA /* NotesRoundsTableViewController.h */,
-				C305CC6919D320E1003A57BA /* NotesRoundsTableViewController.m */,
+				C381DD2F19DC97E200976D71 /* NotesRoundsViewController.h */,
+				C381DD3019DC97E200976D71 /* NotesRoundsViewController.m */,
 				C305CC6B19D32119003A57BA /* NotesRoundsTableViewCell.h */,
 				C305CC6C19D32119003A57BA /* NotesRoundsTableViewCell.m */,
 			);
-			name = NotesController;
+			name = NotesRoundsController;
+			sourceTree = "<group>";
+		};
+		C351FD7A19E099B700208266 /* NotesRankingsController */ = {
+			isa = PBXGroup;
+			children = (
+				C351FD7619E0953500208266 /* NotesRankingsTableViewController.h */,
+				C351FD7719E0953600208266 /* NotesRankingsTableViewController.m */,
+				C351FD7B19E099C900208266 /* NotesRankingsTableViewCell.h */,
+				C351FD7C19E099C900208266 /* NotesRankingsTableViewCell.m */,
+			);
+			name = NotesRankingsController;
 			sourceTree = "<group>";
 		};
 		C3EADB4D19C258D7000BAA15 /* InfoController */ = {
@@ -612,6 +656,7 @@
 			files = (
 				C3EADB4C19BB869E000BAA15 /* ScheduleTableView.m in Sources */,
 				121625EE1983AC5E00F5F8CB /* MapPin.m in Sources */,
+				C351FD7819E0953600208266 /* NotesRankingsTableViewController.m in Sources */,
 				C3EADB6219C26202000BAA15 /* InfoTableViewCell.m in Sources */,
 				1223CB0D1972067F004AAC9E /* FMRAppDelegate.m in Sources */,
 				12FB083C1994280E007596FA /* ScheduleTableViewController.m in Sources */,
@@ -622,17 +667,20 @@
 				12BAB2C61992963F00D6400D /* CalendarTableViewController.m in Sources */,
 				C3EADB5819C25907000BAA15 /* InfoTableViewController.m in Sources */,
 				C3EADB5B19C25907000BAA15 /* InfoDetailsTableViewController.m in Sources */,
-				C305CC6A19D320E1003A57BA /* NotesRoundsTableViewController.m in Sources */,
+				C32AE52519E0A98B00CBB528 /* NotesNotesTableViewController.m in Sources */,
 				1223CB091972067F004AAC9E /* main.m in Sources */,
 				C3EADB6E19C268E7000BAA15 /* InfoDetailsTableViewC.m in Sources */,
 				C336AB4D19CB2D9000CAF266 /* NotesScheduleTableViewController.m in Sources */,
 				1223CB3F1972415A004AAC9E /* SororitiesViewController.m in Sources */,
+				C381DD3119DC97E200976D71 /* NotesRoundsViewController.m in Sources */,
 				12FB083F1999D71D007596FA /* ScheduleTableViewCell.m in Sources */,
 				C336AB5019CB2FC900CAF266 /* NotesScheduleTableViewCell.m in Sources */,
+				C351FD7D19E099C900208266 /* NotesRankingsTableViewCell.m in Sources */,
 				121625EB19839AA300F5F8CB /* MapViewController.m in Sources */,
 				C3E6C90B19C2727000776C87 /* NotesMainTableViewCell.m in Sources */,
 				C305CC6D19D32119003A57BA /* NotesRoundsTableViewCell.m in Sources */,
 				C3EADB7119C26F57000BAA15 /* NotesTableViewController.m in Sources */,
+				C32AE52919E0AB1C00CBB528 /* NotesNotesTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

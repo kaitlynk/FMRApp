@@ -271,7 +271,6 @@
     
     NSArray *infoKeys = [[_infoCategories objectAtIndex:row] allKeys];
     
-    NSLog(@"%@", [infoKeys objectAtIndex:0]);
     cell.name.text = [infoKeys objectAtIndex:0];
     cell.desc.text = _infoDescriptions[[infoKeys objectAtIndex:0]];
     return cell;

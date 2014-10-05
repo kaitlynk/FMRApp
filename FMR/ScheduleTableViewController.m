@@ -35,9 +35,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-     NSLog(@"Opened Schedule Table Controller");
-    
     }
 
 - (void)didReceiveMemoryWarning
@@ -68,7 +65,7 @@
     int row = (int)[indexPath row];
     
     cell.timeLabel.text = _rounds[_currDay][row][@"Time"];
-    cell.locationLabel.text = [NSString stringWithFormat:@"Location: %@", _rounds[_currDay][row][@"House"]];
+    [cell.locationLabel setTitle:[NSString stringWithFormat:@"Location: %@", _rounds[_currDay][row][@"House"]] forState:UIControlStateNormal];
     cell.bgImage.layer.cornerRadius = 15;
     cell.bgImage.layer.borderWidth = .25;
     cell.bgImage.layer.borderColor = [UIColor colorWithRed:0.545 green:0.553 blue:0.545 alpha:1].CGColor;

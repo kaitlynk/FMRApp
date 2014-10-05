@@ -33,9 +33,7 @@
                                                          forBarMetrics:UIBarMetricsDefault];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    NSLog(@"%@", [defaults objectForKey:@"schedule"][1]);
-    
+        
     if ([[defaults objectForKey:@"schedule"] count] == 0) {
         NSArray *schedule = @[@{@"name" : @"Orientation",
                     @"date": @"Wednesday, January 14",
@@ -78,7 +76,7 @@
                                      },
                                   @{ @"Time": @"12:40 - 1:50 PM",
                                      @"Event": @"Lunch",
-                                     @"House": @"N/A",
+                                     @"House": @"--",
                                      },
                                   @{ @"Time": @"1:50 - 2:30 PM",
                                      @"Event": @"Round 4",
@@ -127,7 +125,7 @@
                                      },
                                   @{ @"Time": @"12:40 - 1:50 PM",
                                      @"Event": @"Lunch",
-                                     @"House": @"N/A",
+                                     @"House": @"--",
                                      },
                                   @{ @"Time": @"1:50 - 2:30 PM",
                                      @"Event": @"Round 11",
@@ -174,7 +172,7 @@
                                       },
                                    @{ @"Time": @"12:20 - 1:20 PM",
                                       @"Event": @"Lunch",
-                                      @"House": @"N/A",
+                                      @"House": @"--",
                                       },
                                    @{ @"Time": @"1:20 - 2:50 PM",
                                       @"Event": @"Round 5",
@@ -231,7 +229,7 @@
                                      },
                                   @{ @"Time": @"1:05 - 2:05 PM",
                                      @"Event": @"Lunch",
-                                     @"House": @"N/A",
+                                     @"House": @"--",
                                      },
                                   @{ @"Time": @"2:05 - 2:50 PM",
                                      @"Event": @"Round 4",
@@ -522,6 +520,28 @@
         
         [defaults setObject:sororities forKey:@"sororities"];
         [defaults synchronize];
+    }
+    
+    if ([[defaults objectForKey:@"rankings"] count] == 0) {
+        NSArray *rankings = [[[defaults objectForKey:@"sororities"] allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+                
+        [defaults setObject:rankings forKey:@"rankings"];
+        [defaults synchronize];
+        
+    }
+    
+    if ([[defaults objectForKey:@"notes"] count] == 0) {
+        NSArray *sororityKeys = [[[defaults objectForKey:@"sororities"] allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+        
+        NSMutableDictionary *notes = [NSMutableDictionary new];
+        
+        for (NSString *sorority in sororityKeys) {
+            [notes setObject:@"" forKey:sorority];
+        }
+        
+        [defaults setObject:notes forKey:@"notes"];
+        [defaults synchronize];
+        
     }
     
     return YES;

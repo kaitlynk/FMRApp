@@ -8,7 +8,7 @@
 
 #import "NotesScheduleTableViewController.h"
 #import "NotesScheduleTableViewCell.h"
-#import "NotesRoundsTableViewController.h"
+#import "NotesRoundsViewController.h"
 
 @interface NotesScheduleTableViewController ()
 @property (nonatomic, strong) NSArray *schedule;
@@ -76,7 +76,7 @@
                                      },
                                   @{ @"Time": @"12:40 - 1:50 PM",
                                      @"Event": @"Lunch",
-                                     @"House": @"N/A",
+                                     @"House": @" ",
                                      },
                                   @{ @"Time": @"1:50 - 2:30 PM",
                                      @"Event": @"Round 4",
@@ -125,7 +125,7 @@
                                      },
                                   @{ @"Time": @"12:40 - 1:50 PM",
                                      @"Event": @"Lunch",
-                                     @"House": @"N/A",
+                                     @"House": @" ",
                                      },
                                   @{ @"Time": @"1:50 - 2:30 PM",
                                      @"Event": @"Round 11",
@@ -172,7 +172,7 @@
                                       },
                                    @{ @"Time": @"12:20 - 1:20 PM",
                                       @"Event": @"Lunch",
-                                      @"House": @"N/A",
+                                      @"House": @" ",
                                       },
                                    @{ @"Time": @"1:20 - 2:50 PM",
                                       @"Event": @"Round 5",
@@ -229,7 +229,7 @@
                                      },
                                   @{ @"Time": @"1:05 - 2:05 PM",
                                      @"Event": @"Lunch",
-                                     @"House": @"N/A",
+                                     @"House": @" ",
                                      },
                                   @{ @"Time": @"2:05 - 2:50 PM",
                                      @"Event": @"Round 4",
@@ -294,7 +294,7 @@
                                      },
                                   @{ @"Time": @"7:00 PM",
                                      @"Event": @"Bid Night",
-                                     @"House": @"TBA",
+                                     @"House": @" ",
                                      },
                                   ]
                     },
@@ -373,7 +373,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NotesRoundsTableViewController *nextController = [segue destinationViewController ];
+    NotesRoundsViewController *nextController = [segue destinationViewController ];
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     int row = [indexPath row];
     nextController.roundID = row;

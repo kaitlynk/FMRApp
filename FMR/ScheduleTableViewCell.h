@@ -10,7 +10,7 @@
 
 @interface ScheduleTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *locationLabel;
+@property (strong, nonatomic) IBOutlet UIButton *locationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *eventLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *bgImage;
 @end

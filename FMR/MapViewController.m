@@ -65,7 +65,6 @@
 
 -(IBAction)Direction:(id)sender {
     NSString *urlString = [NSString stringWithFormat: @"http://maps.apple.com/maps?daddr=%@,%@", _coordinates[0], _coordinates[1]];
-    NSLog(@"%@", urlString);
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
 
