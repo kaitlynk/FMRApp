@@ -1,0 +1,25 @@
+{
+  "name": "fmr",
+  "version": "1.0.0",
+  "description": "formal recruitment app",
+  "main": "index.js",
+  "engines": {
+  "node" :  "0.11.9"
+  }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaitlynk/FMRApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaitlynk/FMRApp/issues"
+  },
+  "homepage": "https://github.com/kaitlynk/FMRApp#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
