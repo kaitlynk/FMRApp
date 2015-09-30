@@ -7,7 +7,9 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('api/getSororities', function(req, res) {
+app.get('api/getSororityNames', function(req, res) {
 	res.send('Hello World!');
 });
+
+// getSororities
 
