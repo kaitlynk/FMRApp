@@ -20,6 +20,12 @@
   },
   "homepage": "https://github.com/kaitlynk/FMRApp#readme",
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "http": "*",
+    "mongojs": "*",
+    "connect": "*",
+    "morgan": "*",
+    "cookie-parser": "*",
+    "body-parser": "*"
   }
 }

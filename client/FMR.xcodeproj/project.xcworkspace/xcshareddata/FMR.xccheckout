@@ -14,11 +14,11 @@
 		<string>https://github.com/kaitlynk/FMRApp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>FMR.xcodeproj</string>
+	<string>client/FMR.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>9923B9B6B18AAF6AD7F72C43AFC20F175B970086</key>
-		<string>../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/kaitlynk/FMRApp.git</string>
