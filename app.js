@@ -2,12 +2,13 @@ var express = require('express');
 var http = require('http');
 var connect = require('connect'),
 	mongojs = require('mongojs');
+var mongodb = require('mongodb');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var app = express();
-var server = app.listen(process.env.PORT || 5000);
+var server = app.listen(process.env.PORT || 8080);
  
 app.set('view engine', 'ejs');
 
@@ -19,16 +20,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 var uri = "mongodb://admin:admin@ds051863.mongolab.com:51863/heroku_bzhpj4l3";
-var db = mongojs.connect(uri, ["calendar", "info", "sororities"]);
+mongodb.MongoClient.connect(uri, function(err, db) {
+	if (err) throw err;
+});
 
-app.use(function(req,res,next) { 
+/*app.use(function(req,res,next) { 
 	req.db = db; 
 	next();
-}); 
+});*/ 
 
 
 // Sorority Info
-app.get('/api/getSororityNames', function(req, res) {
+/*app.get('/api/getSororityNames', function(req, res) {
 	console.log('here');
 });
 
@@ -76,4 +79,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;
+module.exports = app;*/
