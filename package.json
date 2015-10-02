@@ -26,6 +26,7 @@
     "connect": "*",
     "morgan": "*",
     "cookie-parser": "*",
-    "body-parser": "*"
+    "body-parser": "*",
+    "mongodb": "*"
   }
 }
