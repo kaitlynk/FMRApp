@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface FMRAppDelegate : UIResponder <UIApplicationDelegate>
-
+{
+    NSURLConnection *currentConnection;
+}
 @property (strong, nonatomic) UIWindow *window;
+@property (retain, nonatomic) NSMutableData *returnData;
+@property (nonatomic) NSInteger status;
 
 @end

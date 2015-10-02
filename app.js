@@ -20,23 +20,64 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 var uri = "mongodb://admin:admin@ds051863.mongolab.com:51863/heroku_bzhpj4l3";
-mongodb.MongoClient.connect(uri, function(err, db) {
-	if (err) throw err;
-});
 
-/*app.use(function(req,res,next) { 
-	req.db = db; 
-	next();
-});*/ 
+app.use(function(req,res,next) { 
+	mongodb.MongoClient.connect(uri, function(err, db) {
+		if (err) throw err;
+		else {
+			req.db = db; 
+			next();
+		}
+	});
+});
 
 
 // Sorority Info
-/*app.get('/api/getSororityNames', function(req, res) {
-	console.log('here');
+app.get('/api/getSororityNames', function(req, res) {
+	var db = req.db;
+	db.collection("sororities").find({}, {name: 1, _id: 0}).toArray(function(err, sororities) {
+		if (err)
+			throw err;
+		else {
+			var sororityArray = [];
+			for (var s in sororities)
+				sororityArray.push(sororities[s].name);
+			
+			res.send(sororityArray);
+			db.close();
+		}
+	});
 });
 
 app.get('/api/getSororities', function(req, res) {
+	var db = req.db;
+	var sororitiesCollection = db.collection("sororities");
+	sororitiesCollection.find({}).toArray(function(err, sororities) {
+		if (err)
+			throw err;
+		else {
+			res.send(sororities);
+			db.close();
+		}
+	});
+});
 
+
+// Sorority Info
+app.get('/api/getSororitiesDict', function(req, res) {
+	var db = req.db;
+	db.collection("sororities").find({}, {_id: 0}).toArray(function(err, sororities) {
+		if (err)
+			throw err;
+		else {
+			var sororityDict = {};
+			for (var s in sororities)
+				sororityDict[sororities[s].name] = sororities[s];
+			
+			res.send(sororityDict);
+			db.close();
+		}
+	});
 });
 
 app.post('/api/addSorority', function(req, res) {
@@ -44,7 +85,7 @@ app.post('/api/addSorority', function(req, res) {
 });
 
 app.get('*', function(req, res) {
-	console.log('heerererereee');
+	
 });
 
 // catch 404 and forward to error handler
@@ -61,6 +102,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
+    console.log(err);
     res.render('error', {
       message: err.message,
       error: err
@@ -72,6 +114,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
+  console.log(err);
   res.render('error.jade', {
     message: err.message,
     error: {}
@@ -79,4 +122,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;*/
+module.exports = app;
