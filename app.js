@@ -1,7 +1,6 @@
 var express = require('express');
 var http = require('http');
-var connect = require('connect'),
-	mongojs = require('mongojs');
+var connect = require('connect');
 var mongodb = require('mongodb');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -100,9 +99,6 @@ app.get('/api/getInfo', function(req, res) {
 				}
 			}
 
-			infoCategories = Object.keys(infoDescriptions);
-
-			info.push(infoCategories);
 			info.push(infoDescriptions);
 			info.push(infoDetails);
 

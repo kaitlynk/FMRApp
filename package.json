@@ -22,7 +22,6 @@
   "dependencies": {
     "express": "^4.13.3",
     "http": "*",
-    "mongojs": "*",
     "connect": "*",
     "morgan": "*",
     "body-parser": "~1.12.0",

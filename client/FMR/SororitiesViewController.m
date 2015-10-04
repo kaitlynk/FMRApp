@@ -88,9 +88,7 @@
     NSArray *sororityKeys = [_sororities allKeys];
     NSArray *sortedKeys = [sororityKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
-    NSLog(@"%@", sortedKeys);
     int row = (int)[indexPath row];
-    NSLog(@"%@", _sororities[sortedKeys[row]]);
     
     cell.nameLabel.text = _sororities[sortedKeys[row]][@"name"];
     cell.letterLabel.text = _sororities[sortedKeys[row]][@"letters"];

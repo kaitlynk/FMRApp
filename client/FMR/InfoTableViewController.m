@@ -46,8 +46,8 @@
         [defaults synchronize];
     }
     
-    _infoCategories = [info objectAtIndex:0];
-    _infoDescriptions = [info objectAtIndex:1];
+    _infoDescriptions = [info objectAtIndex:0];
+    _infoCategories = [_infoDescriptions allKeys];
     
     NSLog(@"%@", _infoCategories);
     
@@ -87,10 +87,9 @@
     
     int row = (int)[indexPath row];
     
-    NSArray *infoKeys = [[_infoCategories objectAtIndex:row] allKeys];
+    cell.name.text = [_infoCategories objectAtIndex:row];
+    cell.desc.text = [_infoDescriptions objectForKey:[_infoCategories objectAtIndex:row]];
     
-    cell.name.text = [infoKeys objectAtIndex:0];
-    cell.desc.text = _infoDescriptions[[infoKeys objectAtIndex:0]];
     return cell;
 }
 
@@ -103,6 +102,7 @@
 
     NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
     int row = (int)[myIndexPath row];
+    NSLog(@"%@", [_infoCategories objectAtIndex:row]);
     
     infoDetailsViewController.infoDetails = [_infoCategories objectAtIndex:row];
 }
