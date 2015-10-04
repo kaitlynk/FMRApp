@@ -52,8 +52,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSDictionary *allVals = [[_infoDetails allValues] objectAtIndex:0];
-    return allVals.count;
+    return [_infoDetails count];
 }
 
 
@@ -65,10 +64,9 @@
     
     int row = (int)[indexPath row];
 
-    
-    cell.pageTitle.text = [NSString stringWithFormat:@"%@", [[_infoDetails allKeys] objectAtIndex:0]];
-    cell.titleLabel.text =[NSString stringWithFormat:@"%@", [ [ [ [_infoDetails allValues] objectAtIndex:0] objectAtIndex:row] objectForKey:@"title" ]];
-    cell.descLabel.text = [NSString stringWithFormat:@"%@", [ [ [ [_infoDetails allValues] objectAtIndex:0] objectAtIndex:row] objectForKey:@"desc" ]];
+    cell.pageTitle.text = _infoTitle;
+    cell.titleLabel.text =[NSString stringWithFormat:@"%@", [ [_infoDetails objectAtIndex:row] objectForKey:@"title" ]];
+    cell.descLabel.text = [NSString stringWithFormat:@"%@", [ [_infoDetails objectAtIndex:row] objectForKey:@"desc" ]];
     
     return cell;
 }

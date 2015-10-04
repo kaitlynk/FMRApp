@@ -33,16 +33,7 @@
                                                          forBarMetrics:UIBarMetricsDefault];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@{} forKey:@"info"];
-    
-
-    if ([[defaults objectForKey:@"schedule"] count] == 0) {
-        NSArray *schedule = @[];
-    
-        [defaults setObject:schedule forKey:@"schedule"];
-        [defaults synchronize];
-    
-    }
+    [defaults setObject:@[] forKey:@"calendar"];
     
     if ([[defaults objectForKey:@"rankings"] count] == 0) {
         NSArray *rankings = [[[defaults objectForKey:@"sororities"] allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface InfoDetailsTableViewController : UITableViewController
-@property (nonatomic, strong) NSDictionary *infoDetails;
-
+@property (nonatomic, strong) NSArray *infoDetails;
+@property (nonatomic, strong) NSString *infoTitle;
 @end

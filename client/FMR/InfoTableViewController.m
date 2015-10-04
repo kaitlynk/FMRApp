@@ -48,8 +48,7 @@
     
     _infoDescriptions = [info objectAtIndex:0];
     _infoCategories = [_infoDescriptions allKeys];
-    
-    NSLog(@"%@", _infoCategories);
+    _infoDetails = [info objectAtIndex:1];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -75,7 +74,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_infoCategories count];
+    return [_infoDescriptions count];
 }
 
 
@@ -102,9 +101,11 @@
 
     NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
     int row = (int)[myIndexPath row];
-    NSLog(@"%@", [_infoCategories objectAtIndex:row]);
     
-    infoDetailsViewController.infoDetails = [_infoCategories objectAtIndex:row];
+    infoDetailsViewController.infoDetails = [_infoDetails objectForKey:[NSString stringWithFormat:@"%@",[_infoCategories objectAtIndex:row]]];
+    
+    infoDetailsViewController.infoTitle = [_infoCategories objectAtIndex:row];
+    
 }
 
 

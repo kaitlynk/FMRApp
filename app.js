@@ -119,6 +119,17 @@ app.get('/api/getInfoCategories', function(req, res) {
 	});
 });
 
+app.get('/api/getCalendar', function(req, res) {
+	var db = req.db;
+	db.collection("calendar").find({}, {_id:0}).toArray(function(err, calendar) {
+		if (err) throw err;
+		else {
+			res.send(calendar);
+			db.close();
+		}
+	});
+});
+
 app.post('/api/addSorority', function(req, res) {
 
 });

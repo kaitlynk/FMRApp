@@ -11,4 +11,5 @@
 @interface InfoTableViewController : UITableViewController
 @property (nonatomic, strong) NSArray *infoCategories;
 @property (nonatomic, strong) NSDictionary *infoDescriptions;
+@property (nonatomic, strong) NSDictionary *infoDetails;
 @end

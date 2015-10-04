@@ -38,6 +38,22 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *calendar = [defaults objectForKey:@"schedule"];
+    
+    if ([calendar count] == 0) {
+        NSString *url = @"http://cu-recruitment.herokuapp.com/api/getCalendar";
+        NSString *escapedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:escapedURL]];
+        NSURLResponse *response;
+        NSError *error;
+        
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        calendar = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+        [defaults setObject:calendar forKey:@"schedule"];
+        [defaults synchronize];
+    }
+    
     }
 
 - (void)didReceiveMemoryWarning
