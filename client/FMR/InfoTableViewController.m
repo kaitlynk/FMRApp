@@ -29,9 +29,25 @@
 {
     [super viewDidLoad];
     
-    _infoCategories = @[];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *info = [defaults objectForKey:@"info"];
+
     
-    _infoDescriptions = @{};
+    if ([info count] == 0) {
+        NSString *url = @"http://cu-recruitment.herokuapp.com/api/getInfo";
+        NSString *escapedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:escapedURL]];
+        NSURLResponse *response;
+        NSError *error;
+        
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        info = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+        [defaults setObject:info forKey:@"info"];
+        [defaults synchronize];
+    }
+    
+    _infoCategories = [info objectAtIndex:0];
+    _infoDescriptions = [info objectAtIndex:1];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

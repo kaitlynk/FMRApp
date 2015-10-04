@@ -33,25 +33,15 @@
                                                          forBarMetrics:UIBarMetricsDefault];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *url = @"cu-recruitment.heroku.com/api/getSororitiesDict";
-    [self getRequest:url];
+    [defaults setObject:@{} forKey:@"sororities"];
     
+
     if ([[defaults objectForKey:@"schedule"] count] == 0) {
         NSArray *schedule = @[];
     
         [defaults setObject:schedule forKey:@"schedule"];
         [defaults synchronize];
     
-    }
-    
-    if ([[defaults objectForKey:@"sororities"] count] == 0) {
-        NSString *url = @"cu-recruitment.heroku.com/api/getSororitiesDict";
-        [self getRequest:url];
-        
-        NSDictionary *sororities = @{};
-        
-        [defaults setObject:sororities forKey:@"sororities"];
-        [defaults synchronize];
     }
     
     if ([[defaults objectForKey:@"rankings"] count] == 0) {
@@ -104,25 +94,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
--(void)getRequest:(NSString *)urlStr {
-    NSLog(@"Starting call");
-    NSURL *url = [NSURL URLWithString:urlStr];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response,
-                                               NSData *data, NSError *connectionError)
-     {
-         if (data.length > 0 && connectionError == nil) {
-             NSDictionary *res = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-             NSLog(@"%@",res);
-         } else {
-             NSLog(@"%@", data);
-             NSLog(@"%@", connectionError);
-         }
-     }];
 }
 
 @end

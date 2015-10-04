@@ -80,6 +80,33 @@ app.get('/api/getSororitiesDict', function(req, res) {
 	});
 });
 
+
+app.get('/api/getInfo', function(req, res) {
+	var db = req.db;
+	db.collection("info").find({}, {_id: 0}).toArray(function(err, categories) {
+		if (err) throw err;
+		else {
+			var info = [];
+			var infoCategories = [];
+			var infoDescriptions = {};
+
+			for (var i in categories) {
+				if (categories[i].name == "Descriptions") {
+					infoCategories = categories[i].info;
+				} else {
+					infoDescriptions[categories[i].name] = categories[i].info;
+				}
+			}
+
+			info.push(infoCategories);
+			info.push(infoDescriptions);
+
+			res.send(info);
+			db.close();
+		}
+	});
+});
+
 app.post('/api/addSorority', function(req, res) {
 
 });

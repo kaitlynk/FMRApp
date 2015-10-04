@@ -43,6 +43,20 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _sororities = [defaults objectForKey:@"sororities"];
     
+    if ([_sororities count] == 0) {
+        NSString *url = @"http://cu-recruitment.herokuapp.com/api/getSororitiesDict";
+        NSString *escapedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:escapedURL]];
+        NSURLResponse *response;
+        NSError *error;
+        
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        _sororities = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+        [defaults setObject:_sororities forKey:@"sororities"];
+        [defaults synchronize];
+    }
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,14 +88,17 @@
     NSArray *sororityKeys = [_sororities allKeys];
     NSArray *sortedKeys = [sororityKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
+    NSLog(@"%@", sortedKeys);
     int row = (int)[indexPath row];
+    NSLog(@"%@", _sororities[sortedKeys[row]]);
     
     cell.nameLabel.text = _sororities[sortedKeys[row]][@"name"];
     cell.letterLabel.text = _sororities[sortedKeys[row]][@"letters"];
     cell.thumbBG.layer.cornerRadius = 29;
-    float red = [[_sororities[sortedKeys[row]][@"color"] objectAtIndex:0] floatValue];
-    float green = [[_sororities[sortedKeys[row]][@"color"] objectAtIndex:1] floatValue];
-    float blue = [[_sororities[sortedKeys[row]][@"color"] objectAtIndex:2] floatValue];
+    NSArray *sororityColors = [ _sororities[sortedKeys[row]][@"color"] componentsSeparatedByString:@"," ];
+    float red =  [[sororityColors objectAtIndex:0] floatValue];
+    float green = [[sororityColors objectAtIndex:1] floatValue];
+    float blue = [[sororityColors objectAtIndex:2] floatValue];
     //cell.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:.2];
     cell.thumbBG.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
     //cell.letterLabel.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
@@ -154,3 +171,15 @@
 */
 
 @end
+
+
+/* [NSURLConnection sendAsynchronousRequest:request
+ queue:[NSOperationQueue mainQueue]
+ completionHandler:^(NSURLResponse *response,
+ NSData *data, NSError *connectionError) {
+ if (data.length > 0 && connectionError == nil) {
+ _sororities = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+ [defaults setObject:sororities forKey:@"sororities"];
+ [defaults synchronize];
+ }
+ }];*/
