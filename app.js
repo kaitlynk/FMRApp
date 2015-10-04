@@ -87,21 +87,39 @@ app.get('/api/getInfo', function(req, res) {
 		if (err) throw err;
 		else {
 			var info = [];
+
 			var infoCategories = [];
-			var infoDescriptions = {};
+			var infoDescriptions = [];
+			var infoDetails = {};
 
 			for (var i in categories) {
 				if (categories[i].name == "Descriptions") {
-					infoCategories = categories[i].info;
+					for (var j in categories[i].info) {
+						infoCategories = infoCategories.concat(Object.keys(categories[i]["info"][j]));
+						infoDescriptions.push(categories[i]["info"][j][Object.keys(categories[i]["info"][j])]);
+					}
+					
 				} else {
-					infoDescriptions[categories[i].name] = categories[i].info;
+					infoDetails[categories[i].name] = categories[i].info;
 				}
 			}
 
 			info.push(infoCategories);
 			info.push(infoDescriptions);
+			info.push(infoDetails);
 
 			res.send(info);
+			db.close();
+		}
+	});
+});
+
+app.get('/api/getInfoCategories', function(req, res) {
+	var db = req.db;
+	db.collection("info").find({name: "Descriptions"}, {_id: 0, info: 1}).toArray(function(err, categories) {
+		if (err) throw err;
+		else {
+			res.send(categories[0].info);
 			db.close();
 		}
 	});

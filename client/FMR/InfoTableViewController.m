@@ -49,6 +49,8 @@
     _infoCategories = [info objectAtIndex:0];
     _infoDescriptions = [info objectAtIndex:1];
     
+    NSLog(@"%@", _infoCategories);
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
