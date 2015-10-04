@@ -89,20 +89,18 @@ app.get('/api/getInfo', function(req, res) {
 			var info = [];
 
 			var infoCategories = [];
-			var infoDescriptions = [];
+			var infoDescriptions = {};
 			var infoDetails = {};
 
 			for (var i in categories) {
 				if (categories[i].name == "Descriptions") {
-					for (var j in categories[i].info) {
-						infoCategories = infoCategories.concat(Object.keys(categories[i]["info"][j]));
-						infoDescriptions.push(categories[i]["info"][j][Object.keys(categories[i]["info"][j])]);
-					}
-					
+					infoDescriptions = categories[i].info;
 				} else {
 					infoDetails[categories[i].name] = categories[i].info;
 				}
 			}
+
+			infoCategories = Object.keys(infoDescriptions);
 
 			info.push(infoCategories);
 			info.push(infoDescriptions);
