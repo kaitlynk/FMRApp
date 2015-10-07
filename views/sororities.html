@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Admin Page</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="../css/styles.css">
+		<script src = "../js/functions.js"></script>
+		<script src = "../js/updateSororities.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<a href = '/sororities' class = 'selected'>Sororities</a>
+			<a href = '/calendar'>Calendar</a>
+			<a href = '/info'>Information</a>
+		</header>
+
+		<div id = "container" class = "sororities">
+			<ul>
+				<% for (var k in sororities[0]) { %>
+					<% if (k != "_id") { %>
+						<li class = '<%=k%>'>
+							<input type = 'text' value = '<%=k%>'/>
+						</li>
+					<% } else { %>
+						<li class = 'hidden <%=k%>'>
+							<input type = 'text' value = '<%=k%>'/>
+						</li>
+					<% } %>
+				<% } %>
+			</ul>
+
+			<% sororities.forEach(function(sorority, i) { %>
+				<ul id = '<%=sorority.name%>'>
+					<% for (var j in sorority) { %>
+						<% if (j != "_id") { %>
+							<li class = '<%=j%>'>
+								<input type = 'text' value = '<%=sorority[j]%>'/>
+							</li>
+						<% } else { %>
+							<li class = 'hidden <%=j%>'>
+								<input type = 'text' value = '<%=sorority[j]%>' />
+							</li>
+						<% } %>
+					<% } %>
+				</ul>
+			<% }); %>
+		</div>
+		<input type = "button" value = "Save" id = "save"/>
+	</body>
+</html>

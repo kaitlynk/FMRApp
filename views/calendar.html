@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Admin Page</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="../css/styles.css">
+		<script src = "../js/functions.js"></script>
+		<script src = "../js/updateCalendar.js"></script>
+		<script>
+			$(document).ready(function() {
+				var collection = <%- JSON.stringify(collection) %>
+				$("#"+collection).addClass("selected");
+			});
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<a href = '/sororities' id = 'sororities'>Sororities</a>
+			<a href = '/calendar' id = 'calendar'>Calendar</a>
+			<a href = '/info' id = 'info'>Information</a>
+		</header>
+
+		<div id = "container">
+			<select>
+				<% for (var k in data) { %>
+					<option value = '<%=data[k]._id%>'><%=data[k].name%></option>
+				<% } %>
+			</select>
+			<input type = 'button' value = '+' id = 'add-attr'/>
+			<input type = 'button' value = 'Save' id = 'save'/>
+			<% for (var k in data) { %>
+				<ul class = <% if (k > 0) { %> 'hidden' <% } else { %> 'selected-data' <% } %> id = '<%=data[k]._id%>' >
+					<% if ("info" in data[k]) { var listData = data[k].info } else { var listData = data[k] } %>
+
+					<% for (var j in listData) { %>
+						<% if ("info" in data[k]) { var key = listData[j].title } else { var key = j } %>
+						<% if ("info" in data[k]) { var value = listData[j].desc } else { var value = listData[j] } %>
+
+						<li <% if (key == '_id') { %> class = 'hidden' <% } %> >
+
+						<!-- Setting the name of the attribute -->
+							<% if (key == 'name' || key == 'description') { %>
+
+								<label name = 'attributeName' value = '<%=key%>'><%=key%></label>
+
+							<% } else if (key == 'rounds') { %>
+
+								<label name = 'attributeName' value = '<%=key%>' class = 'round-li'><%=key%></label>
+
+							<%} else { %>
+
+								<input type = 'text' name = 'attributeName' value = '<%=key%>'>
+							
+							<% } %>
+
+
+						<!-- Setting the value of the attribute -->
+
+							<% if (key == 'description') { %>
+								<textarea class = '<%=key%>'><%=value%></textarea>
+
+							<% } else if (key == 'rounds') { %>
+								
+								<% for (var z in value) { %>
+									<li class = 'round'>
+										<input type = 'text' name = 'Event' value = '<%=value[z].Event%>'/>
+										<input type = 'text' name = 'Time' value = '<%=value[z].Time%>'/>
+										<input type = 'text' name = 'House' value = '<%=value[z].House%>'/>
+										<span class = 'remove clickable'>[-]</span>
+									</li>
+								<% } %>
+
+							<% } else { %>
+
+								<input type = 'text' class = '<%=key%>' name = 'attributeValue' value = '<%=value%>'/> 
+
+								<% if (key != 'name' && key != 'rounds' && key != 'description') { %>
+									<span class = 'remove clickable'>[-]</span>
+
+								<% } %>
+							
+							<% } %>
+
+						</li>
+
+					<% } %>
+
+				</ul>
+			<% } %>
+		</div>
+		<span id = 'add-sorority'>[+]</span>
+	</body>
+</html>

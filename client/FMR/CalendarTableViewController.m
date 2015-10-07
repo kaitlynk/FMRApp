@@ -54,7 +54,7 @@
         [defaults synchronize];
     }
     
-    }
+}
 
 - (void)didReceiveMemoryWarning
 {

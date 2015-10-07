@@ -1,0 +1,101 @@
+html, body {
+	margin: 0px;
+	font-family: 'Lato', sans-serif;
+	font-weight: 200;
+	background: #FAFAFA;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+input[type=text], textarea {
+	font-family: 'Lato', sans-serif;
+	font-weight: 200;
+	font-size: 15px;
+	width: 200px;
+	outline: none;
+	border: 1px solid #CCCCCC;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+textarea {
+	width: 400px;
+	height: 100px;
+}
+
+select {
+	font-family: 'Lato', sans-serif;
+	font-weight: 200;
+	font-size: 20px;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	margin-bottom: 10px;
+}
+
+.hidden {
+	display: none;
+}
+
+input[type=button] {
+	font-size: 20px;
+}
+
+header {
+	background: #7D7D7D;
+	height: 50px;
+	display: table;
+	width: 100%;
+	font-size: 20px;
+	position: fixed;
+	z-index: 1000000;
+}
+
+header > a {
+	display: table-cell;
+	vertical-align: middle;
+	width: 200px;
+	text-align: center;
+	color: #575757;
+	text-decoration: none;
+}
+
+header > a.selected, header > a:hover {
+	background: #FAFAFA;
+	color: #000;
+}
+
+ul {
+	padding: 0px;
+	margin: 10px;
+}
+
+#container {
+	position: absolute;
+	top: 50px;
+	padding: 10px;
+}
+
+.sororities > ul {
+	float: left;
+	width: 200px;
+}
+
+#container {
+	text-align: center;
+	width: 100%;
+}
+
+#container label {
+	display: block;
+}
+
+li.round > label {
+	font-style: italic;
+}

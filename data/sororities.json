@@ -1,5 +1,6 @@
 [
 	{
+		"_id" : "1",
 		"name" : "Alpha Chi Omega",
 		"color" : "0.91,0.53,0.53",
 		"letters" : "ΑΧΟ",
@@ -15,6 +16,7 @@
 		"coordinates" : "42.457139, -76.486958"
 	},
 	{
+		"_id" : "2",
 		"name" : "Alpha Epsilon Phi",
 		"color" : "0.36,0.72,0.25",
 		"letters" : "ΑΕΦ",
@@ -30,6 +32,7 @@
 		"coordinates" : "42.456656, -76.485473"
 	},
 	{
+		"_id" : "3",
 		"name" : "Alpha Phi",
 		"color" : "1,0.37,0.21",
 		"letters" : "ΑΦ",
@@ -45,6 +48,7 @@
 		"coordinates" : "42.453293, -76.483892"
 	},
 	{
+		"_id" : "4",
 		"name" : "Alpha Xi Delta",
 		"color" : "0.53,0.64,0.91",
 		"letters" : "ΑΞΔ",
@@ -60,6 +64,7 @@
 		"coordinates" : "42.455389, -76.489696"
 	},
 	{
+		"_id" : "5",
 		"name" : "Delta Delta Delta",
 		"color" : "0.77,0.77,0.77",
 		"letters" : "ΔΔΔ",
@@ -75,6 +80,7 @@
 		"coordinates" : "42.455406, -76.481376"
 	},
 	{
+		"_id" : "6",
 		"name" : "Delta Gamma",
 		"color" : "0.62,0.77,0.91",
 		"letters" : "ΔΓ",
@@ -90,6 +96,7 @@
 		"coordinates" : "42.455491, -76.480454"
 	},
 	{
+		"_id" : "7",
 		"name" : "Kappa Alpha Theta",
 		"color" : "0.93,0.92,0.45",
 		"letters" : "ΚΑΘ",
@@ -105,6 +112,7 @@
 		"coordinates" : "42.444563, -76.488975"
 	},
 	{
+		"_id" : "8",
 		"name" : "Kappa Delta",
 		"color" : "0.42,0.66,0.31",
 		"letters" : "KΔ",
@@ -120,6 +128,7 @@
 		"coordinates" : "42.454868, -76.480469"
 	},
 	{
+		"_id" : "9",
 		"name" : "Kappa Kappa Gamma",
 		"color" : "0.24,0.47,0.85",
 		"letters" : "ΚΚΓ",
@@ -135,6 +144,7 @@
 		"coordinates" : "42.453918, -76.483146"
 	},
 	{
+		"_id" : "10",
 		"name" : "Phi Mu",
 		"color" : "0.95,0.76,0.20",
 		"letters" : "ΦΜ",
@@ -150,6 +160,7 @@
 		"coordinates" : "42.445036, -76.487844"
 	},
 	{
+		"_id" : "11",
 		"name" : "Phi Sigma Sigma",
 		"color" : "0.95,0.76,0.20",
 		"letters" : "ΦΣΣ",
@@ -165,6 +176,7 @@
 		"coordinates" : "42.445036, -76.487844"
 	},
 	{
+		"_id" : "12",
 		"name" : "Pi Beta Phi",
 		"color" : "0.65,0.11,0.0",
 		"letters" : "ΠΒΦ",
@@ -180,6 +192,7 @@
 		"coordinates" : "42.458168, -76.482588"
 	},
 	{
+		"_id" : "13",
 		"name" : "Sigma Delta Tau",
 		"color" : "0.77,0.65,0.53",
 		"letters" : "ΣΔΤ",
