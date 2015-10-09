@@ -35,7 +35,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@[] forKey:@"info"];
     [defaults setObject:@[] forKey:@"sororities"];
-    [defaults setObject:@[] forKey:@"calendar"];
+    [defaults setObject:@[] forKey:@"schedule"];
     
     if ([[defaults objectForKey:@"rankings"] count] == 0) {
         NSArray *rankings = [[[defaults objectForKey:@"sororities"] allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];

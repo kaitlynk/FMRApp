@@ -90,7 +90,7 @@ router.get('/api/getInfoCategories', function(req, res) {
 
 router.get('/api/getCalendar', function(req, res) {
 	var db = req.db;
-	db.collection("calendar").find({}, {_id:0}).toArray(function(err, calendar) {
+	db.collection("calendar").find({}, {_id:0}).sort({_id: 1}).toArray(function(err, calendar) {
 		if (err) throw err;
 		else {
 			res.send(calendar);

@@ -29,7 +29,7 @@ $(document).ready(function() {
 			saveData.info = [];
 
 		attributes.each(function(i) {
-			var currKey = $(this).children("*[name=attributeName]").attr('value');
+			var currKey = ( $(this).children("*[name=attributeName]").val() == "" ) ? $(this).children("*[name=attributeName]").attr('value') : $(this).children("*[name=attributeName]").val() ;
 			var currValue;
 
 			if (currKey.trim().toLowerCase() == 'rounds') {
@@ -55,7 +55,7 @@ $(document).ready(function() {
 				currValue = $(this).children("*[name=attributeValue]").val();
 			}
 
-			if (collection.trim().toLowerCase() === 'info' && currKey != '_id' && currKey != 'name') {
+			if (collection.trim().toLowerCase() === 'info' && currKey.trim().toLowerCase() != '_id' && currKey.trim().toLowerCase() != 'name') {
 				saveData.info.push({title: currKey, desc: currValue});
 			} else {
 				saveData[currKey] = currValue;	

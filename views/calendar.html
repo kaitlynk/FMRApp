@@ -39,7 +39,8 @@
 						<li <% if (j == '_id') { %> class = 'hidden' <% } %> >
 
 						<!-- Setting the name of the attribute -->
-							<% if (j == 'name' || j == 'description' || j == 'letters' || j == 'color' || j == 'crestImg' || j == 'coordinates' || j == 'address') { %>
+							<% if (j == 'name' || j == 'description' || j == 'letters' || j == 'color' || j == 'crestImg' || j == 'coordinates' || j == 'address' ||
+								j == 'date' || j == 'meeting_info' || j == 'full_time' || j == 'attire' ) { %>
 
 								<label name = 'attributeName' value = '<%=j%>'><%=j%></label>
 
