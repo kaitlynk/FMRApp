@@ -59,9 +59,17 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:bgImgName]];
     //self.navigationItem.title = _detailsArray[1];
     
+    NSString *detailsText = @"";
     
-    _detailsText.text = [NSString stringWithFormat:@"Nickname: %@ \nNational Founding: %@ \nCornell Founding: %@ \nColors: %@ \nSymbol: %@ \nFlower: %@ \nPhilanthropy: %@",
-        _sorority[@"nickname"], _sorority[@"national founding"], _sorority[@"cornell founding"],  _sorority[@"colors"], _sorority[@"symbol"], _sorority[@"flower"], _sorority[@"philanthropy"]];
+    for (NSString* key in _sorority) {
+        NSString* value = [_sorority objectForKey:key];
+        detailsText = [detailsText stringByAppendingString: [NSString stringWithFormat:@"%@: %@ \n", key, value] ];
+    }
+    
+    _detailsText.text = detailsText;
+    
+    //[NSString stringWithFormat:@"Nickname: %@ \nNational Founding: %@ \nCornell Founding: %@ \nColors: %@ \nSymbol: %@ \nFlower: %@ \nPhilanthropy: %@",
+    //    _sorority[@"nickname"], _sorority[@"national founding"], _sorority[@"cornell founding"],  _sorority[@"colors"], _sorority[@"symbol"], _sorority[@"flower"], _sorority[@"philanthropy"]];
     
     _detailsText.numberOfLines = 0;
     _detailsText.frame = CGRectMake(20,20,200,800);

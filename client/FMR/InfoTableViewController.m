@@ -47,8 +47,10 @@
     }
     
     _infoDescriptions = [info objectAtIndex:0];
-    _infoCategories = [_infoDescriptions allKeys];
     _infoDetails = [info objectAtIndex:1];
+    
+    
+    NSLog(@"DESCRIPTIONS: %@ \n\n DETAILS: %@", _infoDescriptions, _infoDetails);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -86,8 +88,12 @@
     
     int row = (int)[indexPath row];
     
-    cell.name.text = [_infoCategories objectAtIndex:row];
-    cell.desc.text = [_infoDescriptions objectForKey:[_infoCategories objectAtIndex:row]];
+    NSDictionary *currDescription = [_infoDescriptions objectAtIndex:row];
+    
+    NSLog(@"%@", currDescription);
+    
+    cell.name.text = [ currDescription objectForKey:@"title" ];
+    cell.desc.text = [ currDescription objectForKey:@"desc" ];
     
     return cell;
 }
@@ -102,9 +108,9 @@
     NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
     int row = (int)[myIndexPath row];
     
-    infoDetailsViewController.infoDetails = [_infoDetails objectForKey:[NSString stringWithFormat:@"%@",[_infoCategories objectAtIndex:row]]];
+    infoDetailsViewController.infoDetails = [_infoDetails objectForKey: [[_infoDescriptions objectAtIndex:row] objectForKey:@"title"]];
     
-    infoDetailsViewController.infoTitle = [_infoCategories objectAtIndex:row];
+    infoDetailsViewController.infoTitle = [[_infoDescriptions objectAtIndex:row] objectForKey:@"title"];
     
 }
 

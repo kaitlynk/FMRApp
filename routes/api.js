@@ -61,7 +61,7 @@ router.get('/api/getInfo', function(req, res) {
 			var infoDetails = {};
 
 			for (var i in categories) {
-				if (categories[i].name == "Descriptions") {
+				if (i == 0) {
 					infoDescriptions = categories[i].info;
 				} else {
 					infoDetails[categories[i].name] = categories[i].info;

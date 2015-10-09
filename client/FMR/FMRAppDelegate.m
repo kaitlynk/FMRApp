@@ -33,6 +33,8 @@
                                                          forBarMetrics:UIBarMetricsDefault];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@[] forKey:@"info"];
+    [defaults setObject:@[] forKey:@"sororities"];
     [defaults setObject:@[] forKey:@"calendar"];
     
     if ([[defaults objectForKey:@"rankings"] count] == 0) {

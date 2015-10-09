@@ -11,6 +11,7 @@
 			$(document).ready(function() {
 				var collection = <%- JSON.stringify(collection) %>
 				$("#"+collection).addClass("selected");
+				console.log(<%- JSON.stringify(data) %>);
 			});
 		</script>
 	</head>
@@ -32,51 +33,51 @@
 			<input type = 'button' value = 'Save' id = 'save'/>
 			<% for (var k in data) { %>
 				<ul class = <% if (k > 0) { %> 'hidden' <% } else { %> 'selected-data' <% } %> id = '<%=data[k]._id%>' >
-					<% if ("info" in data[k]) { var listData = data[k].info } else { var listData = data[k] } %>
 
-					<% for (var j in listData) { %>
-						<% if ("info" in data[k]) { var key = listData[j].title } else { var key = j } %>
-						<% if ("info" in data[k]) { var value = listData[j].desc } else { var value = listData[j] } %>
+					<% for (var j in data[k]) { %>
 
-						<li <% if (key == '_id') { %> class = 'hidden' <% } %> >
+						<li <% if (j == '_id') { %> class = 'hidden' <% } %> >
 
 						<!-- Setting the name of the attribute -->
-							<% if (key == 'name' || key == 'description') { %>
+							<% if (j == 'name' || j == 'description' || j == 'letters' || j == 'color' || j == 'crestImg' || j == 'coordinates' || j == 'address') { %>
 
-								<label name = 'attributeName' value = '<%=key%>'><%=key%></label>
+								<label name = 'attributeName' value = '<%=j%>'><%=j%></label>
 
-							<% } else if (key == 'rounds') { %>
+							<% } else if (j == 'rounds') { %>
 
-								<label name = 'attributeName' value = '<%=key%>' class = 'round-li'><%=key%></label>
+								<label name = 'attributeName' value = '<%=j%>' class = 'round-li'><%=j%></label>
 
 							<%} else { %>
 
-								<input type = 'text' name = 'attributeName' value = '<%=key%>'>
+								<input type = 'text' name = 'attributeName' value = '<%=j%>'>
 							
 							<% } %>
 
 
 						<!-- Setting the value of the attribute -->
 
-							<% if (key == 'description') { %>
-								<textarea class = '<%=key%>'><%=value%></textarea>
+							<% if (j == 'description') { %>
+								<textarea class = '<%=j%>'><%=data[k][j]%></textarea>
 
-							<% } else if (key == 'rounds') { %>
+							<% } else if (j == 'rounds') { %>
 								
-								<% for (var z in value) { %>
+								<% for (var z in data[k][j]) { %>
 									<li class = 'round'>
-										<input type = 'text' name = 'Event' value = '<%=value[z].Event%>'/>
-										<input type = 'text' name = 'Time' value = '<%=value[z].Time%>'/>
-										<input type = 'text' name = 'House' value = '<%=value[z].House%>'/>
+										<input type = 'text' name = 'Event' value = '<%=data[k][j][z].Event%>'/>
+										<input type = 'text' name = 'Time' value = '<%=data[k][j][z].Time%>'/>
+										<input type = 'text' name = 'House' value = '<%=data[k][j][z].House%>'/>
 										<span class = 'remove clickable'>[-]</span>
 									</li>
 								<% } %>
 
 							<% } else { %>
 
-								<input type = 'text' class = '<%=key%>' name = 'attributeValue' value = '<%=value%>'/> 
-
-								<% if (key != 'name' && key != 'rounds' && key != 'description') { %>
+								<% if (data[k][j].length < 40) { %>
+									<input type = 'text' class = '<%=j%>' name = 'attributeValue' value = '<%=data[k][j]%>'/> 
+								<% } else { %> 
+									<br/><textarea class = '<%=j%>' name = 'attributeValue'><%=data[k][j]%></textarea>
+								<% } %>
+								<% if (j != 'name' && j != 'rounds' && j != 'description') { %>
 									<span class = 'remove clickable'>[-]</span>
 
 								<% } %>

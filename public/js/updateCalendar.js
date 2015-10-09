@@ -2,11 +2,11 @@ $(document).ready(function() {
 
 	$("label").each(function(i) {
 		var currText = $(this).text();
-		$(this).text(capitalizeWords(currText));
+		$(this).text(currText);
 	});
 
 	
-	$("li.round:first").prev().append("<span id = 'add-round' class = 'add clickable'>[+]</span>");
+	addRoundRowButton();
 	
 
 	$(document).on("change", "select", function() {
@@ -14,6 +14,7 @@ $(document).ready(function() {
 		var newRound = $(this).val();
 		console.log(newRound);
 		$("#"+newRound).removeClass("hidden").addClass("selected-data");
+		addRoundRowButton();
 	});
 
 
@@ -21,7 +22,11 @@ $(document).ready(function() {
 		
 		// Select all the attributes that are not Rounds
 		var attributes = $(".selected-data li:not(.round)");
+		var collection = $(".selected").attr('id');
 		var saveData = {};
+
+		if (collection.trim().toLowerCase() === 'info')
+			saveData.info = [];
 
 		attributes.each(function(i) {
 			var currKey = $(this).children("*[name=attributeName]").attr('value');
@@ -50,11 +55,17 @@ $(document).ready(function() {
 				currValue = $(this).children("*[name=attributeValue]").val();
 			}
 
-			saveData[uncapitalizeWords(currKey)] = currValue;
-
+			if (collection.trim().toLowerCase() === 'info' && currKey != '_id' && currKey != 'name') {
+				saveData.info.push({title: currKey, desc: currValue});
+			} else {
+				saveData[currKey] = currValue;	
+			}
+			
 		});
 
-		var collection = $(".selected").attr('id');
+		
+
+		console.log(saveData);
 
 		$.ajax({
 			url: '/api/updateData',
@@ -99,7 +110,10 @@ $(document).ready(function() {
 		$(this).parent().remove();
 	});
 
-
-
 });
+
+
+function addRoundRowButton() {
+	$(".selected-data li.round:first").prev().append("<span id = 'add-round' class = 'add clickable'>[+]</span>");
+}
 

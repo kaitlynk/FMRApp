@@ -56,9 +56,6 @@ router.post('/api/updateData', function(req, res) {
 	var collection = req.body.collection;
 	var data = req.body.data;
 
-	console.log(collection);
-	console.log(data);
-
 	db.collection(collection).update({_id: data._id}, data, {upsert: true}, function(err, success) {
 		if (err)
 			throw err;
