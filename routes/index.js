@@ -34,35 +34,14 @@ router.get('/:collection', function(req, res) {
 			} else
 				respData = data;
 
-			res.render('calendar', {collection: params.collection, data: respData});
+			res.render('index', {collection: params.collection, data: respData});
 		}
 	});
 	
 });
 
 
-/*router.get('/info', function(req, res) {
-	var db = req.db;
-	db.collection("sororities").find({}).sort({name: 1}).toArray(function(err, sororities) {
-		if (err)
-			throw err;
-		else {
-			res.render('info', {sororities: sororities});
-		}
-	});
-	
-});*/
-
-
 router.get('*', function(req, res) {
-	/*var db = req.db;
-	db.collection("sororities").find({}).sort({name: 1}).toArray(function(err, sororities) {
-		if (err)
-			throw err;
-		else {
-			res.render('sororities', {sororities: sororities});
-		}
-	});*/
 	res.redirect('/sororities');
 });
 
