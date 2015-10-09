@@ -12,9 +12,10 @@ $(document).ready(function() {
 	$(document).on("change", "select", function() {
 		$(".selected-data").addClass("hidden").removeClass("selected-data");
 		var newRound = $(this).val();
-		console.log(newRound);
 		$("#"+newRound).removeClass("hidden").addClass("selected-data");
-		addRoundRowButton();
+		if ( $(".selected-data .add-round").length == 0) {
+			addRoundRowButton();
+		}
 	});
 
 
@@ -81,7 +82,7 @@ $(document).ready(function() {
 	});
 
 
-	$(document).on("click", "#add-round", function() {
+	$(document).on("click", ".add-round", function() {
 		$(".selected-data .round:last").after("<li class = 'round'> \
 				<input type = 'text' name = 'Event' value = ''>\
 				<input type = 'text' name = 'Time' value = ''>\
@@ -114,6 +115,6 @@ $(document).ready(function() {
 
 
 function addRoundRowButton() {
-	$(".selected-data li.round:first").prev().append("<span id = 'add-round' class = 'add clickable'>[+]</span>");
+	$(".selected-data li.round:first").prev().append("<span class = 'add clickable add-round'>[+]</span>");
 }
 
