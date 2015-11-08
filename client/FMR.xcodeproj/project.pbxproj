@@ -84,6 +84,9 @@
 		C351FD7819E0953600208266 /* NotesRankingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C351FD7719E0953600208266 /* NotesRankingsTableViewController.m */; };
 		C351FD7D19E099C900208266 /* NotesRankingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C351FD7C19E099C900208266 /* NotesRankingsTableViewCell.m */; };
 		C381DD3119DC97E200976D71 /* NotesRoundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C381DD3019DC97E200976D71 /* NotesRoundsViewController.m */; };
+		C3C172E91BEC75F80095B5E3 /* 150x150bb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3C172E81BEC75F80095B5E3 /* 150x150bb.jpg */; };
+		C3C172EB1BEC76010095B5E3 /* IMG_0163.PNG in Resources */ = {isa = PBXBuildFile; fileRef = C3C172EA1BEC76010095B5E3 /* IMG_0163.PNG */; };
+		C3C172ED1BEC771D0095B5E3 /* ios in Resources */ = {isa = PBXBuildFile; fileRef = C3C172EC1BEC771D0095B5E3 /* ios */; };
 		C3E6C90B19C2727000776C87 /* NotesMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E6C90A19C2727000776C87 /* NotesMainTableViewCell.m */; };
 		C3EADB4919BB8037000BAA15 /* MainCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EADB4819BB8037000BAA15 /* MainCalendarViewController.m */; };
 		C3EADB4C19BB869E000BAA15 /* ScheduleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EADB4B19BB869E000BAA15 /* ScheduleTableView.m */; };
@@ -203,6 +206,9 @@
 		C351FD7C19E099C900208266 /* NotesRankingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesRankingsTableViewCell.m; sourceTree = "<group>"; };
 		C381DD2F19DC97E200976D71 /* NotesRoundsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesRoundsViewController.h; sourceTree = "<group>"; };
 		C381DD3019DC97E200976D71 /* NotesRoundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesRoundsViewController.m; sourceTree = "<group>"; };
+		C3C172E81BEC75F80095B5E3 /* 150x150bb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 150x150bb.jpg; sourceTree = "<group>"; };
+		C3C172EA1BEC76010095B5E3 /* IMG_0163.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0163.PNG; sourceTree = "<group>"; };
+		C3C172EC1BEC771D0095B5E3 /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ios; sourceTree = "<group>"; };
 		C3E6C90919C2727000776C87 /* NotesMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesMainTableViewCell.h; sourceTree = "<group>"; };
 		C3E6C90A19C2727000776C87 /* NotesMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesMainTableViewCell.m; sourceTree = "<group>"; };
 		C3EADB4719BB8037000BAA15 /* MainCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCalendarViewController.h; sourceTree = "<group>"; };
@@ -302,10 +308,13 @@
 		1223CB031972067F004AAC9E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C3C172EC1BEC771D0095B5E3 /* ios */,
 				1223CB041972067F004AAC9E /* FMR-Info.plist */,
 				1223CB051972067F004AAC9E /* InfoPlist.strings */,
 				1223CB081972067F004AAC9E /* main.m */,
 				1223CB0A1972067F004AAC9E /* FMR-Prefix.pch */,
+				C3C172EA1BEC76010095B5E3 /* IMG_0163.PNG */,
+				C3C172E81BEC75F80095B5E3 /* 150x150bb.jpg */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -551,7 +560,7 @@
 				ORGANIZATIONNAME = "Kaitlyn Kwan";
 				TargetAttributes = {
 					1223CAF81972067F004AAC9E = {
-						DevelopmentTeam = 53P8SSA6QR;
+						DevelopmentTeam = YNNH5S8U7R;
 						SystemCapabilities = {
 							com.apple.iOS = {
 								enabled = 1;
@@ -627,8 +636,11 @@
 				1223CB3919722D95004AAC9E /* header.png in Resources */,
 				1223CB8E19727591004AAC9E /* AXObg.png in Resources */,
 				1223CB7619724E32004AAC9E /* Theta.png in Resources */,
+				C3C172E91BEC75F80095B5E3 /* 150x150bb.jpg in Resources */,
 				1223CB071972067F004AAC9E /* InfoPlist.strings in Resources */,
+				C3C172ED1BEC771D0095B5E3 /* ios in Resources */,
 				1223CB101972067F004AAC9E /* Main.storyboard in Resources */,
+				C3C172EB1BEC76010095B5E3 /* IMG_0163.PNG in Resources */,
 				1223CBAB19727A6D004AAC9E /* Kappahouse.png in Resources */,
 				1223CBA719727A6D004AAC9E /* AlphaPhihouse.png in Resources */,
 				1223CBB019727A6D004AAC9E /* SDThouse.png in Resources */,

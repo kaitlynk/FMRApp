@@ -37,7 +37,7 @@
     [defaults setObject:@[] forKey:@"sororities"];
     [defaults setObject:@[] forKey:@"schedule"];
     
-    if ([[defaults objectForKey:@"rankings"] count] == 0) {
+    /*if ([[defaults objectForKey:@"rankings"] count] == 0) {
         NSArray *rankings = [[[defaults objectForKey:@"sororities"] allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
                 
         [defaults setObject:rankings forKey:@"rankings"];
@@ -57,7 +57,7 @@
         [defaults setObject:notes forKey:@"notes"];
         [defaults synchronize];
         
-    }
+    }*/
     
     return YES;
 }
