@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface NotesTableViewController : UITableViewController
+@property (nonatomic, strong) NSArray *notesSectionsArr;
 @property (nonatomic, strong) NSDictionary *notesSections;
 @end

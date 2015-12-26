@@ -100,7 +100,11 @@
     //cell.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:.2];
     cell.thumbBG.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
     //cell.letterLabel.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
-    cell.thumbCrest.image = [UIImage imageNamed: _sororities[sortedKeys[row]][@"crestImg"]];
+    
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: _sororities[sortedKeys[row]][@"crestImg"]]];
+    
+    cell.thumbCrest.image = [UIImage imageWithData: imageData];
+    
     return cell;
 }
 

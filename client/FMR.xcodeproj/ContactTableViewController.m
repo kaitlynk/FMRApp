@@ -1,67 +1,65 @@
 //
-//  NotesScheduleTableViewController.m
-//  FMR
+//  ContactTableViewController.m
+//  
 //
-//  Created by Kwan, Kaitlyn on 9/18/14.
-//  Copyright (c) 2014 Kaitlyn Kwan. All rights reserved.
+//  Created by Kaitlyn Kwan on 12/25/15.
+//
 //
 
-#import "NotesScheduleTableViewController.h"
-#import "NotesScheduleTableViewCell.h"
-#import "NotesRoundsViewController.h"
+#import "ContactTableViewController.h"
+#import "ContactTableViewCell.h"
 
-@interface NotesScheduleTableViewController ()
+@interface ContactTableViewController ()
 
 @end
 
-@implementation NotesScheduleTableViewController
+@implementation ContactTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    _schedule = [defaults objectForKey:@"schedule"];
     
-    if ([_schedule count] == 0) {
-        NSString *url = @"http://cu-recruitment.herokuapp.com/api/getCalendar";
+    _contactInfo = [[defaults objectForKey:@"contactInfo"] mutableCopy];
+    
+    NSDictionary *rhoGammaInfo = [defaults objectForKey:@"rhoGammaInfo"];
+    
+    if ([_contactInfo count] == 0) {
+        NSString *url = @"http://cu-recruitment.herokuapp.com/api/getContactInfo";
         NSString *escapedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:escapedURL]];
         NSURLResponse *response;
         NSError *error;
         
         NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        _schedule = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-        [defaults setObject:_schedule forKey:@"schedule"];
+        
+        _contactInfo = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+        [defaults setObject:_contactInfo forKey:@"contactInfo"];
         [defaults synchronize];
     }
+    
+    
+    if (rhoGammaInfo.count > 0) {
+        NSLog(@"here");
+        [_contactInfo addObject:rhoGammaInfo];
+    }
+    
+    NSLog(@"%@", _contactInfo);
+
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    
 }
 
 #pragma mark - Table view data source
-- (IBAction)reset:(id)sender {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *url = @"http://cu-recruitment.herokuapp.com/api/getCalendar";
-    NSString *escapedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:escapedURL]];
-    NSURLResponse *response;
-    NSError *error;
-    
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    _schedule = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-    [defaults setObject:_schedule forKey:@"schedule"];
-    [defaults synchronize];
-}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -70,20 +68,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return _schedule.count;
+    return _contactInfo.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *CellIdentifier = @"NotesScheduleTableViewCell";
-    NotesScheduleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    ContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ContactTableViewCell" forIndexPath:indexPath];
+    
     
     int row = (int)[indexPath row];
+    NSDictionary *currContact = _contactInfo[row];
     
-    cell.title.text = [_schedule objectAtIndex:row][@"name"];
-    cell.date.text = [_schedule objectAtIndex:row][@"date"];
+    for (id keyID in currContact) {
+        NSString *key = [keyID description];
+        UILabel *currLabel = [cell    valueForKey:key];
+        currLabel.text = [currContact objectForKey:key];
+    }
     
     return cell;
 }
@@ -123,16 +124,14 @@
 }
 */
 
-
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NotesRoundsViewController *nextController = [segue destinationViewController];
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    int row = [indexPath row];
-    nextController.roundID = row;
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
-
+*/
 
 @end

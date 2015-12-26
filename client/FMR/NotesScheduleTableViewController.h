@@ -10,4 +10,5 @@
 
 @interface NotesScheduleTableViewController : UITableViewController
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
+@property (strong, nonatomic) NSArray *schedule;
 @end

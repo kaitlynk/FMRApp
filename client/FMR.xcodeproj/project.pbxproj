@@ -84,6 +84,11 @@
 		C351FD7819E0953600208266 /* NotesRankingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C351FD7719E0953600208266 /* NotesRankingsTableViewController.m */; };
 		C351FD7D19E099C900208266 /* NotesRankingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C351FD7C19E099C900208266 /* NotesRankingsTableViewCell.m */; };
 		C381DD3119DC97E200976D71 /* NotesRoundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C381DD3019DC97E200976D71 /* NotesRoundsViewController.m */; };
+		C395563E1C27CF7E0092663F /* MoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = C395563D1C27CF7E0092663F /* MoreController.m */; };
+		C39556411C2E13250092663F /* MoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C39556401C2E13250092663F /* MoreTableViewCell.m */; };
+		C39556491C2E1F550092663F /* RhoGammaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C39556481C2E1F550092663F /* RhoGammaViewController.m */; };
+		C395564C1C2E38660092663F /* ContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C395564B1C2E38660092663F /* ContactTableViewController.m */; };
+		C395564F1C2E45240092663F /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C395564E1C2E45240092663F /* ContactTableViewCell.m */; };
 		C3C172E91BEC75F80095B5E3 /* 150x150bb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C3C172E81BEC75F80095B5E3 /* 150x150bb.jpg */; };
 		C3C172EB1BEC76010095B5E3 /* IMG_0163.PNG in Resources */ = {isa = PBXBuildFile; fileRef = C3C172EA1BEC76010095B5E3 /* IMG_0163.PNG */; };
 		C3C172ED1BEC771D0095B5E3 /* ios in Resources */ = {isa = PBXBuildFile; fileRef = C3C172EC1BEC771D0095B5E3 /* ios */; };
@@ -206,6 +211,16 @@
 		C351FD7C19E099C900208266 /* NotesRankingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesRankingsTableViewCell.m; sourceTree = "<group>"; };
 		C381DD2F19DC97E200976D71 /* NotesRoundsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesRoundsViewController.h; sourceTree = "<group>"; };
 		C381DD3019DC97E200976D71 /* NotesRoundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesRoundsViewController.m; sourceTree = "<group>"; };
+		C395563C1C27CF7E0092663F /* MoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreController.h; sourceTree = "<group>"; };
+		C395563D1C27CF7E0092663F /* MoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreController.m; sourceTree = "<group>"; };
+		C395563F1C2E13250092663F /* MoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewCell.h; sourceTree = "<group>"; };
+		C39556401C2E13250092663F /* MoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewCell.m; sourceTree = "<group>"; };
+		C39556471C2E1F550092663F /* RhoGammaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RhoGammaViewController.h; sourceTree = "<group>"; };
+		C39556481C2E1F550092663F /* RhoGammaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RhoGammaViewController.m; sourceTree = "<group>"; };
+		C395564A1C2E38660092663F /* ContactTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTableViewController.h; sourceTree = "<group>"; };
+		C395564B1C2E38660092663F /* ContactTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewController.m; sourceTree = "<group>"; };
+		C395564D1C2E45240092663F /* ContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTableViewCell.h; sourceTree = "<group>"; };
+		C395564E1C2E45240092663F /* ContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
 		C3C172E81BEC75F80095B5E3 /* 150x150bb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 150x150bb.jpg; sourceTree = "<group>"; };
 		C3C172EA1BEC76010095B5E3 /* IMG_0163.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0163.PNG; sourceTree = "<group>"; };
 		C3C172EC1BEC771D0095B5E3 /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ios; sourceTree = "<group>"; };
@@ -295,6 +310,7 @@
 				C3EADB4D19C258D7000BAA15 /* InfoController */,
 				12FB083919942642007596FA /* CalendarController */,
 				12FB08401999E1AD007596FA /* NotesController */,
+				C395563B1C27CF2B0092663F /* MoreController */,
 				1223CBB51972890F004AAC9E /* Icons */,
 				1223CB9819727A6D004AAC9E /* Houses */,
 				1223CB7F19727591004AAC9E /* BGs */,
@@ -496,6 +512,40 @@
 			name = NotesRankingsController;
 			sourceTree = "<group>";
 		};
+		C395563B1C27CF2B0092663F /* MoreController */ = {
+			isa = PBXGroup;
+			children = (
+				C395563C1C27CF7E0092663F /* MoreController.h */,
+				C395563D1C27CF7E0092663F /* MoreController.m */,
+				C395563F1C2E13250092663F /* MoreTableViewCell.h */,
+				C39556401C2E13250092663F /* MoreTableViewCell.m */,
+				C39556431C2E1ED50092663F /* RhoGammaController */,
+				C39556421C2E1EC60092663F /* ContactController */,
+			);
+			name = MoreController;
+			path = FMR.xcodeproj;
+			sourceTree = SOURCE_ROOT;
+		};
+		C39556421C2E1EC60092663F /* ContactController */ = {
+			isa = PBXGroup;
+			children = (
+				C395564A1C2E38660092663F /* ContactTableViewController.h */,
+				C395564B1C2E38660092663F /* ContactTableViewController.m */,
+				C395564D1C2E45240092663F /* ContactTableViewCell.h */,
+				C395564E1C2E45240092663F /* ContactTableViewCell.m */,
+			);
+			name = ContactController;
+			sourceTree = "<group>";
+		};
+		C39556431C2E1ED50092663F /* RhoGammaController */ = {
+			isa = PBXGroup;
+			children = (
+				C39556471C2E1F550092663F /* RhoGammaViewController.h */,
+				C39556481C2E1F550092663F /* RhoGammaViewController.m */,
+			);
+			name = RhoGammaController;
+			sourceTree = "<group>";
+		};
 		C3EADB4D19C258D7000BAA15 /* InfoController */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,14 +716,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C395564F1C2E45240092663F /* ContactTableViewCell.m in Sources */,
 				C3EADB4C19BB869E000BAA15 /* ScheduleTableView.m in Sources */,
 				121625EE1983AC5E00F5F8CB /* MapPin.m in Sources */,
 				C351FD7819E0953600208266 /* NotesRankingsTableViewController.m in Sources */,
 				C3EADB6219C26202000BAA15 /* InfoTableViewCell.m in Sources */,
+				C39556491C2E1F550092663F /* RhoGammaViewController.m in Sources */,
 				1223CB0D1972067F004AAC9E /* FMRAppDelegate.m in Sources */,
 				12FB083C1994280E007596FA /* ScheduleTableViewController.m in Sources */,
 				C3EADB4919BB8037000BAA15 /* MainCalendarViewController.m in Sources */,
 				12FB08381993F178007596FA /* CalendarTableViewCell.m in Sources */,
+				C395564C1C2E38660092663F /* ContactTableViewController.m in Sources */,
 				1223CB7A197254DB004AAC9E /* SororityDetailsViewController.m in Sources */,
 				1223CB4519724656004AAC9E /* SororityTableViewCell.m in Sources */,
 				12BAB2C61992963F00D6400D /* CalendarTableViewController.m in Sources */,
@@ -682,12 +735,14 @@
 				C32AE52519E0A98B00CBB528 /* NotesNotesTableViewController.m in Sources */,
 				1223CB091972067F004AAC9E /* main.m in Sources */,
 				C3EADB6E19C268E7000BAA15 /* InfoDetailsTableViewC.m in Sources */,
+				C39556411C2E13250092663F /* MoreTableViewCell.m in Sources */,
 				C336AB4D19CB2D9000CAF266 /* NotesScheduleTableViewController.m in Sources */,
 				1223CB3F1972415A004AAC9E /* SororitiesViewController.m in Sources */,
 				C381DD3119DC97E200976D71 /* NotesRoundsViewController.m in Sources */,
 				12FB083F1999D71D007596FA /* ScheduleTableViewCell.m in Sources */,
 				C336AB5019CB2FC900CAF266 /* NotesScheduleTableViewCell.m in Sources */,
 				C351FD7D19E099C900208266 /* NotesRankingsTableViewCell.m in Sources */,
+				C395563E1C27CF7E0092663F /* MoreController.m in Sources */,
 				121625EB19839AA300F5F8CB /* MapViewController.m in Sources */,
 				C3E6C90B19C2727000776C87 /* NotesMainTableViewCell.m in Sources */,
 				C305CC6D19D32119003A57BA /* NotesRoundsTableViewCell.m in Sources */,

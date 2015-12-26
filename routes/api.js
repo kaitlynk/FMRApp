@@ -99,4 +99,16 @@ router.get('/api/getCalendar', function(req, res) {
 	});
 });
 
+
+router.get('/api/getContactInfo', function(req, res) {
+	var db = req.db;
+	db.collection("contactInfo").find({}, {_id:0}).toArray(function(err, contactInfo) {
+		if (err) throw err;
+		else {
+			res.send(contactInfo);
+			db.close();
+		}
+	});
+});
+
 module.exports = router;

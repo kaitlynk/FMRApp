@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSUserDefaults *defaults;
 @property (nonatomic, strong) NSMutableDictionary *notes;
 @property (nonatomic, strong) NSArray *sororities;
+@property (nonatomic, strong) NSDictionary *sororityInfo;
 @end
 
 @implementation NotesNotesTableViewController
@@ -21,6 +22,33 @@
     [super viewDidLoad];
     
     _defaults = [NSUserDefaults standardUserDefaults];
+    _notes = [[_defaults objectForKey:@"notes"] mutableCopy];
+    _sororities = [_defaults objectForKey:@"rankings"];
+    _sororityInfo = [_defaults objectForKey:@"sororities"];
+    
+    if ([_notes count] == 0) {
+        _notes = [NSMutableDictionary new];
+        NSString *url = @"http://cu-recruitment.herokuapp.com/api/getSororityNames";
+        NSString *escapedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:escapedURL]];
+        NSURLResponse *response;
+        NSError *error;
+        
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        _sororities = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+        
+        [_sororities sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+        
+        [_defaults setObject:_sororities forKey:@"rankings"];
+        
+        for (NSString *sorority in _sororities) {
+            [_notes setValue:@"" forKey:sorority];
+        }
+                
+        [_defaults setObject:_notes forKey:@"notes"];
+        
+        [_defaults synchronize];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,8 +65,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    _notes = [[_defaults objectForKey:@"notes"] mutableCopy];
-    _sororities = [_defaults objectForKey:@"rankings"];
+    
     return [_notes count];
 }
 
@@ -51,7 +78,16 @@
     cell.sororityNotes.text = [_notes objectForKey:_sororities[row]];
     cell.sororityNotes.layer.borderWidth = 1;
     cell.sororityNotes.layer.cornerRadius = 10;
+    
+    NSArray *sororityColors = [ _sororityInfo[_sororities[row]][@"color"] componentsSeparatedByString:@"," ];
+    
+    float red =  [[sororityColors objectAtIndex:0] floatValue];
+    float green = [[sororityColors objectAtIndex:1] floatValue];
+    float blue = [[sororityColors objectAtIndex:2] floatValue];
+    
     cell.sororityNotes.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    cell.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:.1];
+
     //[UIColor colorWithRed:0.545 green:0.553 blue:0.545 alpha:1].CGColor;
     
     return cell;

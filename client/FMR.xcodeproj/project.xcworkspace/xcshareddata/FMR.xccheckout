@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>3A74A438-06D1-4054-BE41-34D1A23C5138</string>
 	<key>IDESourceControlProjectName</key>
-	<string>FMR</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>9923B9B6B18AAF6AD7F72C43AFC20F175B970086</key>
 		<string>https://github.com/kaitlynk/FMRApp.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>client/FMR.xcodeproj</string>
+	<string>client/FMR.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>9923B9B6B18AAF6AD7F72C43AFC20F175B970086</key>

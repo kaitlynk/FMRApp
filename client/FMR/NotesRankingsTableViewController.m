@@ -28,6 +28,20 @@
     
     _defaults = [NSUserDefaults standardUserDefaults];
     _rankings = [[_defaults objectForKey:@"rankings"] mutableCopy];
+    
+    if ([_rankings count] == 0) {
+        NSString *url = @"http://cu-recruitment.herokuapp.com/api/getSororityNames";
+        NSString *escapedURL = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:escapedURL]];
+        NSURLResponse *response;
+        NSError *error;
+        
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        _rankings = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+        [_defaults setObject:_rankings forKey:@"rankings"];
+        [_defaults synchronize];
+    }
+    
     [self.tableView setEditing:YES animated:YES];
 }
 

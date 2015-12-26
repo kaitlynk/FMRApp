@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _notesSectionsArr = @[ @"Schedule", @"Notes", @"Rankings" ];
+    
     _notesSections = @{ @"Schedule": @"Sync your schedule to set reminders.",
                         @"Notes": @"Write notes for every house visited.",
                         @"Rankings": @"Set your ranks after every round."
@@ -56,10 +58,9 @@
     // Configure the cell...
     
     int row = (int)[indexPath row];
-    NSArray *keys = [_notesSections allKeys];
     
-    cell.name.text = keys[row];
-    cell.desc.text = _notesSections[keys[row]];
+    cell.name.text = _notesSectionsArr[row];
+    cell.desc.text = _notesSections[_notesSectionsArr[row]];
     
     return cell;
 }
@@ -103,9 +104,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _currRow = (int)[indexPath row];
     
-    if (_currRow == 1)
+    
+    if (_currRow == 0)
         [self performSegueWithIdentifier:@"RoundsSegue" sender:self];
-    else if (_currRow == 0)
+    else if (_currRow == 2)
         [self performSegueWithIdentifier:@"RankingsSegue" sender:self];
     else
         [self performSegueWithIdentifier:@"NotesSegue" sender:self];

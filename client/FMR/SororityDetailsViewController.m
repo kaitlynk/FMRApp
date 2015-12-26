@@ -62,8 +62,10 @@
     NSString *detailsText = @"";
     
     for (NSString* key in _sorority) {
-        NSString* value = [_sorority objectForKey:key];
-        detailsText = [detailsText stringByAppendingString: [NSString stringWithFormat:@"%@: %@ \n", key, value] ];
+        if (![key isEqualToString:@"color"] && ![key isEqualToString:@"address"] && ![key isEqualToString:@"crestImg"]) {
+            NSString* value = [_sorority objectForKey:key];
+            detailsText = [detailsText stringByAppendingString: [NSString stringWithFormat:@"%@: %@ \n", [key capitalizedString], value] ];
+        }
     }
     
     _detailsText.text = detailsText;
