@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSDictionary *schedule;
 @property (nonatomic, strong) NSDictionary *sororities;
 @property (nonatomic, strong) NSUserDefaults *defaults;
+@property (nonatomic, strong) NSDictionary *rhoGammaInfo;
 @end
 
 @implementation MainCalendarViewController
@@ -32,6 +33,8 @@
     _defaults = [NSUserDefaults standardUserDefaults];
     _schedule = [_defaults objectForKey:@"schedule"][_dateRow];
     _sororities = [_defaults objectForKey:@"sororities"];
+    
+    _rhoGammaInfo = [_defaults objectForKey:@"rhoGammaInfo"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,7 +97,10 @@
         case 0:
             cell.timeLabel.text = _rounds[row][@"Time"];
             cell.eventLabel.text = _rounds[row][@"Event"];
-            if ( [_rounds[row][@"House"] isEqualToString:@" "] )
+            if ( [ _rounds[row][@"Event"] isEqualToString:@"Rho Gamma Meeting"] && _rhoGammaInfo.count > 0) {
+                [cell.locationLabel setTitle:[_rhoGammaInfo objectForKey:@"location"] forState:UIControlStateNormal];
+            }
+            else if ( [_rounds[row][@"House"] isEqualToString:@" "] )
                 [cell.locationLabel setTitle:@"--" forState:UIControlStateNormal];
             else if ( [ _rounds[row][@"House"] length ] > 0)
                 [cell.locationLabel setTitle:[NSString stringWithFormat:@"%@", _rounds[row][@"House"]] forState:UIControlStateNormal];
@@ -104,7 +110,10 @@
         case 1:
             cell.timeLabel.text = _ownSched[row][@"Time"];
             cell.eventLabel.text = _ownSched[row][@"Event"];
-            if ( [_rounds[row][@"House"] isEqualToString:@" "] )
+            if ( [ _rounds[row][@"Event"] isEqualToString:@"Rho Gamma Meeting"] && _rhoGammaInfo.count > 0) {
+                [cell.locationLabel setTitle:[_rhoGammaInfo objectForKey:@"location"] forState:UIControlStateNormal];
+            }
+            else if ( [_rounds[row][@"House"] isEqualToString:@" "] )
                 [cell.locationLabel setTitle:@"--" forState:UIControlStateNormal];
             else if ( [ _rounds[row][@"House"] length ] > 0)
                 [cell.locationLabel setTitle:[NSString stringWithFormat:@"%@", _ownSched[row][@"House"]] forState:UIControlStateNormal];

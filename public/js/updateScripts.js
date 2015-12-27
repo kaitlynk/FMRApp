@@ -33,34 +33,36 @@ $(document).ready(function() {
 			var currKey = ( $(this).children("*[name=attributeName]").val() == "" ) ? $(this).children("*[name=attributeName]").attr('value') : $(this).children("*[name=attributeName]").val() ;
 			var currValue;
 
-			if (currKey.trim().toLowerCase() == 'rounds') {
-				currValue = [];
+//			if ( currKey.trim().indexOf("Img") < 0 ) {
+				if (currKey.trim().toLowerCase() == 'rounds') {
+					currValue = [];
 
-				$(".selected-data li.round").each(function(j) {
-					var currRound = {};
+					$(".selected-data li.round").each(function(j) {
+						var currRound = {};
 
-					$(this).children("input").each(function(k) {
-						currRound[$(this).attr('name')] = $(this).val();
+						$(this).children("input").each(function(k) {
+							currRound[$(this).attr('name')] = $(this).val();
+						});
+
+						if (currRound.House.trim().length == 0 && currRound.Event.toLowerCase().indexOf("round") >= 0) {
+							currRound.House = " ";
+						} else if (currRound.Event.toLowerCase() == "lunch") {
+							currRound.House = "--";
+						}
+
+						currValue.push(currRound);
+					
 					});
+				} else {
+					currValue = $(this).children("*[name=attributeValue]").val();
+				}
 
-					if (currRound.House.trim().length == 0 && currRound.Event.toLowerCase().indexOf("round") >= 0) {
-						currRound.House = " ";
-					} else if (currRound.Event.toLowerCase() == "lunch") {
-						currRound.House = "--";
-					}
-
-					currValue.push(currRound);
-				
-				});
-			} else {
-				currValue = $(this).children("*[name=attributeValue]").val();
-			}
-
-			if (collection.trim().toLowerCase() === 'info' && currKey.trim().toLowerCase() != '_id' && currKey.trim().toLowerCase() != 'name') {
-				saveData.info.push({title: currKey, desc: currValue});
-			} else {
-				saveData[currKey] = currValue;	
-			}
+				if (collection.trim().toLowerCase() === 'info' && currKey.trim().toLowerCase() != '_id' && currKey.trim().toLowerCase() != 'name') {
+					saveData.info.push({title: currKey, desc: currValue});
+				} else {
+					saveData[currKey] = currValue;	
+				}
+//			}
 			
 		});
 
@@ -109,6 +111,11 @@ $(document).ready(function() {
 
 	$(document).on("click", ".remove", function() {
 		$(this).parent().remove();
+	});
+
+
+	$(document).on("change", "input[type=file]", function() {
+
 	});
 
 });

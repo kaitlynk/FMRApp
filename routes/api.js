@@ -4,7 +4,7 @@ var router = express.Router();
 // Sorority Info
 router.get('/api/getSororityNames', function(req, res) {
 	var db = req.db;
-	db.collection("sororities").find({}, {name: 1, _id: 0}).toArray(function(err, sororities) {
+	db.collection("sororities").find({}, {name: 1, _id: 0}, {sort: 'name'}).toArray(function(err, sororities) {
 		if (err)
 			throw err;
 		else {

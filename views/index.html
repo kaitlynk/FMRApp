@@ -7,11 +7,28 @@
 		<link rel="stylesheet" href="../css/styles.css">
 		<script src = "../js/functions.js"></script>
 		<script src = "../js/updateScripts.js"></script>
+		<script type="text/javascript" src="../js/libs/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/libs/jquery.ui.widget.js"></script>
+		<script type="text/javascript" src="../js/libs/jquery.iframe-transport.js"></script>
+		<script type="text/javascript" src="../js/libs/jquery.fileupload.js"></script>
+		<script type="text/javascript" src="../js/libs/jquery.cloudinary.js"></script>
 		<script>
 			$(document).ready(function() {
 				var collection = <%- JSON.stringify(collection) %>
 				$("#"+collection).addClass("selected");
 				console.log(<%- JSON.stringify(data) %>);
+
+				$.cloudinary.config({ cloud_name: 'hpw3rpx6q', api_key: '511743976227527'});
+
+				var attr_data = {
+					"api_key": "511743976227527",
+					"timestamp": "1234567890",
+					"public_id": "",
+				 	"signature": "yXy9eWSB85zXOXFwd3MVayXp0i0"
+				};
+
+				$('input[type=file]').attr('data-form-data', JSON.stringify(data));
+
 			});
 		</script>
 	</head>
@@ -40,7 +57,7 @@
 						<li <% if (j == '_id') { %> class = 'hidden' <% } %> >
 
 						<!-- Setting the name of the attribute -->
-							<% if (j == 'name' || j == 'description' || j == 'letters' || j == 'color' || j == 'crestImg' || j == 'coordinates' || j == 'address' ||
+							<% if (j == 'name' || j == 'description' || j == 'letters' || j == 'color' || j == 'coordinates' || j == 'address' || j == 'crestImg' ||
 								j == 'date' || j == 'meeting_info' || j == 'full_time' || j == 'attire' ) { %>
 
 								<label name = 'attributeName' value = '<%=j%>'><%=j%></label>
@@ -72,9 +89,9 @@
 									</li>
 								<% } %>
 
-							<% } else { %>
+							<% } else {
 
-								<% if (data[k][j].length < 40) { %>
+								if (data[k][j].length < 40) { %>
 									<input type = 'text' class = '<%=j%>' name = 'attributeValue' value = '<%=data[k][j]%>'/> 
 								<% } else { %> 
 									<br/><textarea class = '<%=j%>' name = 'attributeValue'><%=data[k][j]%></textarea>

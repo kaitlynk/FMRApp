@@ -33,7 +33,7 @@
         
         NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         
-        _contactInfo = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+        _contactInfo = [[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL] mutableCopy];
         [defaults setObject:_contactInfo forKey:@"contactInfo"];
         [defaults synchronize];
     }
@@ -82,8 +82,10 @@
     
     for (id keyID in currContact) {
         NSString *key = [keyID description];
-        UILabel *currLabel = [cell    valueForKey:key];
-        currLabel.text = [currContact objectForKey:key];
+        if (![key isEqualToString:@"location"]) {
+            UITextView *currLabel = [cell valueForKey:key];
+            currLabel.text = [currContact objectForKey:key];
+        }
     }
     
     return cell;

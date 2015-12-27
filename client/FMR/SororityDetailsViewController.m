@@ -37,32 +37,43 @@
     _nameLabel.layer.borderWidth = 1.0;
     _nameLabel.layer.borderColor = [UIColor colorWithRed:0.298 green:0.302 blue:0.298 alpha:.8].CGColor;
     
+    [_addressLabel setTitle:_sorority[@"address"] forState:UIControlStateNormal];
+    
     
     _letterLabel.text = _sorority[@"letters"];
-    _thumbCrest.image = [UIImage imageNamed:_sorority[@"crestImg"]];
+    
+    //_thumbCrest.image = [UIImage imageNamed:_sorority[@"crestImg"]];
+    NSData *crestImg = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: _sorority[@"crestImg"]]];
+    _thumbCrest.image = [UIImage imageWithData: crestImg];
     
     _detailsBG.layer.cornerRadius = 15;
     _detailsBG.layer.borderWidth = 1.0;
     _detailsBG.layer.borderColor = [UIColor colorWithRed:0.545 green:0.553 blue:0.545 alpha:1].CGColor;
     
-    NSArray *bgImgArr = [_sorority[@"crestImg"] componentsSeparatedByString:@"."];
-    NSString *bgImgName = [NSString stringWithFormat:@"%@bg.png", [bgImgArr objectAtIndex:0]];
-    NSString *houseImageName = [NSString stringWithFormat:@"%@house.png", [bgImgArr objectAtIndex:0]];
+//    NSArray *bgImgArr = [_sorority[@"crestImg"] componentsSeparatedByString:@"."];
+//    NSString *bgImgName = [NSString stringWithFormat:@"%@bg.png", [bgImgArr objectAtIndex:0]];
+//    NSString *houseImageName = [NSString stringWithFormat:@"%@house.png", [bgImgArr objectAtIndex:0]];
     
-    [_addressLabel setTitle:_sorority[@"address"] forState:UIControlStateNormal];
+    NSData *houseImg = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: _sorority[@"houseImg"]]];
+    _houseImage.image = [UIImage imageWithData: houseImg];
+
     
-    _houseImage.image = [UIImage imageNamed:houseImageName];
     UIColor *houseBorderColor = [UIColor colorWithRed:0.298 green:0.302 blue:0.298 alpha:.8];
     [ _houseImage.layer setBorderColor:houseBorderColor.CGColor];
     [ _houseImage.layer setBorderWidth:1.5];
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:bgImgName]];
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:bgImgName]];
+    
+    NSData *bgImg = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: _sorority[@"bgImg"]]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageWithData: bgImg]];
+    
+    
     //self.navigationItem.title = _detailsArray[1];
     
     NSString *detailsText = @"";
     
     for (NSString* key in _sorority) {
-        if (![key isEqualToString:@"color"] && ![key isEqualToString:@"address"] && ![key isEqualToString:@"crestImg"]) {
+        if (![key isEqualToString:@"color"] && ![key isEqualToString:@"address"] && ![key isEqualToString:@"crestImg"] && ![key isEqualToString:@"coordinates"] && ![key isEqualToString:@"name"] && ![key isEqualToString:@"houseImg"] && ![key isEqualToString:@"bgImg"]) {
             NSString* value = [_sorority objectForKey:key];
             detailsText = [detailsText stringByAppendingString: [NSString stringWithFormat:@"%@: %@ \n", [key capitalizedString], value] ];
         }

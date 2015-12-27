@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var cloudinary = require('cloudinary');
 
 router.post('/api/updateData', function(req, res) {
 	var db = req.db;
@@ -13,6 +14,11 @@ router.post('/api/updateData', function(req, res) {
 			res.send("success");
 		}
 	});
+	
+});
+
+router.post('/api/uploadPhoto', function(req, res) {
+	var db = req.db;
 	
 });
 
